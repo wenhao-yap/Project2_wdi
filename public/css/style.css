@@ -12,6 +12,7 @@ h4{
  * HOME
  * ===================================
  */
+
 .sForm{
  	margin:200px auto 0  auto;
  	padding:0px 5px;
@@ -28,3 +29,22 @@ h4{
 	display:block;
 	font-size: 17px;
 }
+
+/**
+ * ===================================
+ * Register
+ * ===================================
+ */
+ .rWrapper{
+ 	width: 215px;
+ 	border:1px solid black;
+ 	padding:0px 30px;
+ 	margin: 150px auto 0 auto;
+ }
+ .rForm{
+ 	margin-top: -20px;
+ }
+ #rSubmit{
+ 	margin-top:10px;
+ 	margin-bottom:20px;
+ }

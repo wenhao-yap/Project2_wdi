@@ -1,9 +1,9 @@
 const pg = require('pg');
-const userDB = require('./models/user');
+const user = require('./models/user');
 
 const configs = {
   host: 'localhost',
-  database: 'loops',
+  database: 'wdi2',
   port: 5432
 };
 
@@ -15,5 +15,5 @@ pool.on('error', (err) => {
 
 module.exports = {
   pool: pool,
-  userDB: userDB(pool)
+  user: user(pool)
 };
