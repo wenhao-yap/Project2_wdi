@@ -16,8 +16,9 @@ CREATE TABLE IF NOT EXISTS songs (
 );
 
 CREATE TABLE IF NOT EXISTS tabs (
-  id SERIAL PRIMARY KEY,
+  tabnum SERIAL PRIMARY KEY,
   song_id int REFERENCES songs(id),
+  user_id int REFERENCES users(id),
   arranger varchar(255),
   link varchar(255)
 );

@@ -29,7 +29,7 @@
 		<button>Create New Entry</button>
 		<table border="1" id="myTable">
 		<tr>
-			<td>ID</td>
+			<td>ID(song)</td>
 			<td>Song</td>
 			<td>Composer</td>
 			<td>Arranger</td>
@@ -42,7 +42,8 @@
 	      <td>{{this.composer}}</td>
 	      <td>{{this.arranger}}</td>
 	      <td style="border:none">
-	      	<button>Edit</button>
+	      	<button><a href="/tabs/{{this.id}}">View</a></button>
+	      	<button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
 	      	<button>Delete</button>
 	      </td>
 	     </tr>

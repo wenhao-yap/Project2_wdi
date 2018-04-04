@@ -13,6 +13,7 @@ const get = (db) => {
         let context = {
           tab: queryResult.rows[0]
         }
+        console.log(queryResult.rows[0]);
         response.render('tab/tab',context);
       }
     });
