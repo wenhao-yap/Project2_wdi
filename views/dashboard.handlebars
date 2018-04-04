@@ -44,7 +44,9 @@
 	      <td style="border:none">
 	      	<button><a href="/tabs/{{this.id}}">View</a></button>
 	      	<button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
-	      	<button>Delete</button>
+	      	<form method="POST" action="/tabs/{{id}}?_method=DELETE" id="deleteButt">
+	      		<button type="submit">Delete</button>
+	      	</form>
 	      </td>
 	     </tr>
 	     {{/each}}

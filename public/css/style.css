@@ -48,3 +48,13 @@ h4{
  	margin-top:10px;
  	margin-bottom:20px;
  }
+
+ /**
+ * ===================================
+ * Dashboard
+ * ===================================
+ */
+ #deleteButt{
+ 	display:inline;
+ 	color: red;
+ }

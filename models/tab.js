@@ -65,6 +65,18 @@ module.exports = (dbPool) => {
       dbPool.query(queryString,values, (error, queryResult) => {
         callback(error,queryResult);
       });
-    }
+    },
+
+    remove: (id, callback) => {
+      const queryString = 'DELETE FROM "public"."tabs" WHERE song_id=$1'
+      const values = [id];
+      dbPool.query(queryString, values, (error, queryResult) => {
+        const secondQuery = 'DELETE FROM "public"."songs" WHERE id=$1'
+        dbPool.query(secondQuery,values,(err,queryOutput) => {
+          console.log(secondQuery);
+          callback(err, queryResult);
+        });  
+      });
+    } 
   }
 };

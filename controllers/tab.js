@@ -13,7 +13,7 @@ const get = (db) => {
         let context = {
           tab: queryResult.rows[0]
         }
-        console.log(queryResult.rows[0]);
+        console.log('Retrieved tab for song ' + queryResult.rows[0].name);
         response.render('tab/tab',context);
       }
     });
@@ -53,7 +53,7 @@ const create = (db) => {
     db.tab.create(request.body, (error, queryResult) => {
       if (queryResult.rowCount >= 1) {
         console.log('Entry added successfully');
-        response.redirect('/');
+        response.redirect('/dashboard');
       } else {
         console.log('Entry failed to be added');
       }
@@ -79,6 +79,23 @@ const search = (db) => {
     })
   };
 };
+
+const remove = (db) => {
+  return (request, response) => {
+    db.tab.remove(request.params.id, (error, queryResult) => {
+      if (error) {
+        console.error('Failed to delete', error);
+        response.sendStatus(500);
+      } else {
+        let context = {
+          tab: queryResult.rows[0]
+        }
+        console.log('Successfully tab deletion');
+        response.redirect('/dashboard');
+      }
+    });
+  };
+};
  /**
  * ===========================================
  * Export controller functions as a module
@@ -91,5 +108,6 @@ module.exports = {
   update,
   createForm,
   create,
-  search
+  search,
+  remove
 } 
