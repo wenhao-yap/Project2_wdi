@@ -44,6 +44,23 @@ const update = (db) => {
   };
 };
 
+const createForm = (request, response) => {
+  response.render('tab/new');
+};
+
+const create = (db) => {
+  return (request, response) => {
+    db.tab.create(request.body, (error, queryResult) => {
+      if (queryResult.rowCount >= 1) {
+        console.log('Entry added successfully');
+        response.redirect('/');
+      } else {
+        console.log('Entry failed to be added');
+      }
+    })
+  };
+};
+
  /**
  * ===========================================
  * Export controller functions as a module
@@ -53,5 +70,7 @@ const update = (db) => {
 module.exports = {
   get,
   updateForm,
-  update
+  update,
+  createForm,
+  create
 } 

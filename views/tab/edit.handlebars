@@ -5,6 +5,10 @@
   <title>GuitarTabs</title>
 </head>
 <body>
+    <form method="get" action="/dashboard">
+    <input type="submit" value="dashboard">
+    </form>
+
   <h4>Editing: {{tab.name}}</h4>
   <form method="POST" action="/tabs/{{tab.id}}/edit?_method=PUT">
     <div>Song:<input name="name" type="text" value="{{tab.name}}"/></div>

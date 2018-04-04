@@ -32,12 +32,13 @@ module.exports = (app,db) => {
 	//search 
 	//songs list
 	//open song menu to see tabs
-	//tab view
-	app.get('/tabs/:id', tabs.get(db));
 	//Edit a current tab
 	app.get('/tabs/:id/edit', tabs.updateForm(db));
 	app.put('/tabs/:id/edit', tabs.update(db));
 	//Create new tab
-	//app.get('/tabs/new', tabs.createTab);
+	app.get('/tabs/new', tabs.createForm);
+	app.post('/tabs', tabs.create(db));
+	//View tab
+	app.get('/tabs/:id', tabs.get(db));
 	//Delete a tab
 };
