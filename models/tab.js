@@ -56,6 +56,15 @@ module.exports = (dbPool) => {
           callback(err, queryResult);
         });  
       });
+    },
+
+    search: (input, callback) => {
+      console.log("search term: " + input.search);
+      const queryString = 'Select * from songs INNER JOIN tabs on tabs.song_id = songs.id WHERE lower(songs.name) = lower($1) OR lower(songs.composer) = lower($1) OR lower(tabs.arranger) = lower($1)';
+      const values = [input.search];
+      dbPool.query(queryString,values, (error, queryResult) => {
+        callback(error,queryResult);
+      });
     }
   }
 };

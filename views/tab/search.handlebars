@@ -24,10 +24,14 @@
 	  </div>
 	</nav>
 
-<form method="POST" action="/search" class="sForm">
-	<input type="text" name="search" placeholder="Search by song, composer, arranger " id="search">
-	<input type="submit" value="Search" name="submSearch" id="submSearch">
-</form>
+	<h4>Search Results</h4>
+	{{#if failSearch}}
+		<h3>Oops! Not in the database. Add it in or try another</h3>
+	{{else}}
+		{{#each searchResult}}
+	    	<li style="margin-left: 150px">{{this.name}}</li>
+	 	{{/each}}
+ 	{{/if}}	
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

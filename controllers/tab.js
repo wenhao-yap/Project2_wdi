@@ -61,6 +61,24 @@ const create = (db) => {
   };
 };
 
+const search = (db) => {
+  return (request, response) => {
+    db.tab.search(request.body, (error, queryResult) => {
+      if (queryResult.rowCount >= 1) {
+        let context = {
+          searchResult: queryResult.rows,
+          failSearch: false
+        }
+        response.render('tab/search',context);
+      } else {
+        let context = {
+          failSearch: true
+        }
+        response.render('tab/search',context);
+      }
+    })
+  };
+};
  /**
  * ===========================================
  * Export controller functions as a module
@@ -72,5 +90,6 @@ module.exports = {
   updateForm,
   update,
   createForm,
-  create
+  create,
+  search
 } 
