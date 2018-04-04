@@ -13,7 +13,7 @@
 	    </div>
 	    <ul class="nav navbar-nav navbar-right">
 	      <li><a href="/">Home</a></li>
-	      <li class="active"><a href = "../users/dashboard">DashBoard</a></li>
+	      <li class="active"><a href = "../dashboard">DashBoard</a></li>
 	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Accounts <span class="caret"></span></a>
 	        <ul class="dropdown-menu">
 	          <li><a href="../users/login">Login</a></li>
@@ -24,9 +24,31 @@
 	  </div>
 	</nav>
 
-	<div>
-		<h4>Hello, Alpha</h4>
-	</div>
+	<main>
+		<h4>Dashboard</h4>
+		<button>Create New Entry</button>
+		<table border="1" id="myTable">
+		<tr>
+			<td>ID</td>
+			<td>Song</td>
+			<td>Composer</td>
+			<td>Arranger</td>
+			<td></td>
+		</tr>
+	      {{#each songs}}
+	    <tr>
+	      <td>{{this.id}}</td>
+	      <td>{{this.name}}</td>
+	      <td>{{this.composer}}</td>
+	      <td>{{this.arranger}}</td>
+	      <td style="border:none">
+	      	<button>Edit</button>
+	      	<button>Delete</button>
+	      </td>
+	     </tr>
+	     {{/each}}
+	  </table>
+	</main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

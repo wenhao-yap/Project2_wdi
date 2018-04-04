@@ -1,4 +1,6 @@
 const users = require('./controllers/user');
+const dashboard = require('./controllers/dashboard');
+const tabs = require('./controllers/tab');
 
 module.exports = (app,db) => {
 	/*
@@ -14,6 +16,28 @@ module.exports = (app,db) => {
 	app.get('/users/login', users.loginForm);
   	app.post('/users/login', users.login(db));
 
+  	/*
+	*  =========================================
+	*  Dashboard
+	*  =========================================
+	*/
 	//Dashboard
-	app.get('/users/dashboard', users.dasher);
+	app.get('/dashboard', dashboard.editor(db));
+
+	/*
+	*  =========================================
+	*  Songs/Tabs
+	*  =========================================
+	*/
+	//search 
+	//songs list
+	//open song menu to see tabs
+	//tab view
+	app.get('/tabs/:id', tabs.get(db));
+	//Edit a current tab
+	app.get('/tabs/:id/edit', tabs.updateForm(db));
+	app.put('/tabs/:id/edit', tabs.update(db));
+	//Create new tab
+	//app.get('/tabs/new', tabs.createTab);
+	//Delete a tab
 };

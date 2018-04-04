@@ -43,11 +43,6 @@ const login = (db) => {
   };
 };
 
-//Dashboard
-const dasher = (request,response) => {
-  response.render('user/dashboard');
-}
-
  /**
  * ===========================================
  * Export controller functions as a module
@@ -57,7 +52,6 @@ const dasher = (request,response) => {
 module.exports = {
   newForm,
   create,
-  dasher,
   loginForm,
   login
 } 

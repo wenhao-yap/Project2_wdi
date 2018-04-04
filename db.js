@@ -1,5 +1,7 @@
 const pg = require('pg');
 const user = require('./models/user');
+const dashboard = require('./models/dashboard');
+const tab = require('./models/tab');
 
 const configs = {
   host: 'localhost',
@@ -15,5 +17,7 @@ pool.on('error', (err) => {
 
 module.exports = {
   pool: pool,
-  user: user(pool)
+  user: user(pool),
+  dashboard: dashboard(pool),
+  tab: tab(pool)
 };
