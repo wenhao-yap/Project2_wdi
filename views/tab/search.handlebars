@@ -29,7 +29,7 @@
 		<h3>Oops! Not in the database. Add it in or try another</h3>
 	{{else}}
 		{{#each searchResult}}
-	    	<li style="margin-left: 150px">{{this.name}}</li>
+	    	<li style="margin-left: 150px"><a href="/tabs/{{this.id}}">{{this.name}}</a></li>
 	 	{{/each}}
  	{{/if}}	
 

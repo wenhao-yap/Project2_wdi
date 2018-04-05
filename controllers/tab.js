@@ -69,7 +69,7 @@ const search = (db) => {
           searchResult: queryResult.rows,
           failSearch: false
         }
-        response.render('tab/search',context);
+        response.render('tab/search',context);       
       } else {
         let context = {
           failSearch: true
