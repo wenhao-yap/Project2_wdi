@@ -1,4 +1,13 @@
 <form method="POST" action="/search" class="sForm">
-	<input type="text" name="search" placeholder="Search by song, composer, arranger " id="search">
+	<input type="text" name="search" placeholder="Search by song, composer, arranger " id="search" required>
 	<input type="submit" value="Search" name="submSearch" id="submSearch">
+	<div class="form-group">
+	    <label for="exampleFormControlSelect2">Search libraries</label>
+	    <select multiple class="form-control" id="exampleFormControlSelect2" name="option">
+	      <option selected>GuitarTabs</option>
+	      <option>Songsterr</option>
+	      <option>Ultimate Guitar</option>
+	    </select>
+	    <small>Disclaimer: Only song names work for Songsterr</small>
+	 </div>
 </form>

@@ -1,3 +1,5 @@
+const request = require("request");
+const ugs = require("ultimate-guitar-scraper");
 /**
  * ===========================================
  * Export model functions as a module
@@ -58,13 +60,44 @@ module.exports = (dbPool) => {
       });
     },
 
-    search: (input, callback) => {
-      console.log("search term: " + input.search);
-      const queryString = 'Select * from songs INNER JOIN tabs on tabs.song_id = songs.id WHERE lower(songs.name) = lower($1) OR lower(songs.composer) = lower($1) OR lower(tabs.arranger) = lower($1)';
-      const values = [input.search];
-      dbPool.query(queryString,values, (error, queryResult) => {
-        callback(error,queryResult);
-      });
+    search: (input, searchterm, callback) => {
+      console.log("search term: " + searchterm);
+      const option = input.option;
+
+      if(input.option == "Songsterr"){
+        console.log("Retrieving from Songsterr");
+        const url = "http://www.songsterr.com/a/ra/songs.json?pattern=" + searchterm;
+
+        request.get(url, (error,response,body) =>{
+          if (error) {console.log(error);}
+          const json = JSON.parse(body);
+          const status = "songsterr";
+          let queryResult = json;
+          callback(status,queryResult);
+        });
+      }
+      else if(input.option == "Ultimate Guitar"){
+        console.log("Retrieving from Ultimate Guitar");
+        ugs.search({
+          query: searchterm,
+          // page: 1,
+          type: ['Tab', 'Chords', 'Guitar Pro']
+        }, (error, tabs) => {
+          if (error){console.log(error);}
+          const status = "ultimateGuitar"
+          const queryResult = tabs;
+          callback(status,queryResult);
+        })
+      }
+      else{
+        input.search = "%" + input.search + "%";
+        const queryString = 'Select * from songs INNER JOIN tabs on tabs.song_id = songs.id WHERE lower(songs.name) LIKE lower($1) OR lower(songs.composer) LIKE lower($1) OR lower(tabs.arranger) LIKE lower($1)';
+        const values = [input.search];
+        dbPool.query(queryString,values, (error, queryResult) => {
+          console.log(queryResult.rows);
+          callback(error,queryResult);
+        });
+      }
     },
 
     remove: (id, callback) => {

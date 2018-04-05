@@ -1,6 +1,9 @@
 .uNav{
 	border-radius: 0px;
 }
+#logout{
+	cursor:pointer;
+}
 
 /**
  * ===================================
@@ -9,7 +12,7 @@
  */
 
 .sForm{
- 	margin:150px auto 0px auto;
+ 	margin:50px auto 0px auto;
  	padding:0px 5px;
  	width:500px;
  }

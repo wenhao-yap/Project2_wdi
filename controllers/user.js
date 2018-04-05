@@ -12,13 +12,9 @@ const create = (db) => {
   return (request, response) => {
 
     //Validation
-    request.checkBody('username', 'Username is required').notEmpty();
-    request.checkBody('email', 'Email is required').notEmpty();
     request.checkBody('email', 'Email is not valid').isEmail();
-    request.checkBody('password', 'Password is required').notEmpty();
     request.checkBody('password2', 'Passwords do not match').equals(request.body.password);
-
-    var errors = request.validationErrors();
+    let errors = request.validationErrors();
 
     if(errors){
       response.render('user/register',{

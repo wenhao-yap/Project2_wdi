@@ -63,14 +63,35 @@ const create = (db) => {
 
 const search = (db) => {
   return (request, response) => {
-    db.tab.search(request.body, (error, queryResult) => {
+    console.log(request.body);
+    const searchterm = request.body.search;
+    db.tab.search(request.body, searchterm, (error, queryResult) => {
       if (queryResult.rowCount >= 1) {
         let context = {
           searchResult: queryResult.rows,
-          failSearch: false
+          failSearch: false,
+          searchTerm: searchterm
         }
         response.render('tab/search',context);       
-      } else {
+      } else if(error == "songsterr"){
+        let context = {
+          searchResult: queryResult,
+          failSearch: false,
+          searchTerm: searchterm,
+          songsterr: true
+        }
+        response.render('tab/search',context); 
+      }
+      else if(error == "ultimateGuitar"){
+        let context = {
+          searchResult: queryResult,
+          failSearch: false,
+          searchTerm: searchterm,
+          ultimateGuitar: true
+        }
+        response.render('tab/search',context); 
+      }
+      else{
         let context = {
           failSearch: true
         }

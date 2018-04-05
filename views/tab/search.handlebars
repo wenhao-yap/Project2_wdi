@@ -1,9 +1,65 @@
-<h4>Search Results</h4>
 {{#if failSearch}}
-	<h3>Oops! Not in the database. Add it in or try another</h3>
+	<h3>Oops! Not in the database. Add it in or try another library</h3>
 {{else}}
-	{{#each searchResult}}
-    	<li style="margin-left: 150px"><a href="/tabs/{{this.id}}">{{this.name}}</a></li>
-	{{/each}}
+	<h3>Displaying {{searchResult.length}} result(s) for {{searchTerm}} :</h3>
+	{{#if songsterr}}
+		<p><small>(Externally from Songsterr)</small></p>
+		<table id="myTable">
+			<thead>
+				<th>ID</th>
+				<th>Song</th>
+				<th>Composer</th>
+			</thead>
+			<tbody>
+				{{#each searchResult}}
+				<tr>
+					<td>{{this.id}}</td>
+					<td><a href="http://www.songsterr.com/a/wa/song?id={{this.id}}">{{this.title}}</a></td>
+					<td>{{this.artist.name}}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	{{else if ultimateGuitar}}
+		<p><small>(Externally from Ultimate Guitar)</small></p>
+		<table id="myTable">
+			<thead>
+				<th>Song</th>
+				<th>Rating</th>
+				<th>Reviews</th>
+			</thead>
+			<tbody>
+				{{#each searchResult}}
+				<tr>
+					<td><a href="{{this.url}}">{{this.name}}</a></td>
+					<td>{{this.rating}}</td>
+					<td>{{this.numberRates}}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<table id="myTable">
+		    <thead>
+		    	<th>ID(song)</th>
+		    	<th>Song</th>
+		    	<th>Composer</th>
+		    	<th>Arranger</th>
+		    </thead>
+		    <tbody>
+		    	{{#each searchResult}}
+		    	<tr>
+			       	<td>{{this.id}}</td>
+			        <td><a href="/tabs/{{this.id}}">{{this.name}}</td>
+			        <td>{{this.composer}}</td>
+			        <td>{{this.arranger}}</td>
+		    	</tr>
+		    	{{/each}}
+		    </tbody> 
+		</table>
+{{!-- 		{{#each searchResult}}
+			<li><a href="/tabs/{{this.id}}">{{this.name}}</a></li>
+		{{/each}} --}}	
+	{{/if}}
 {{/if}}	
 
