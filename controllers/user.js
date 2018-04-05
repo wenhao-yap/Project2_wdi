@@ -17,7 +17,6 @@ const create = (db) => {
     request.checkBody('username', 'Username is required').notEmpty();
     request.checkBody('email', 'Email is required').notEmpty();
     request.checkBody('email', 'Email is not valid').isEmail();
-    request.checkBody('username', 'Username is required').notEmpty();
     request.checkBody('password', 'Password is required').notEmpty();
     request.checkBody('password2', 'Passwords do not match').equals(request.body.password);
 
@@ -38,8 +37,6 @@ const create = (db) => {
         }
 
       });
-
-      console.log('PASSED');
     }
   }
 }
@@ -54,15 +51,24 @@ const login = (db) => {
       if(queryResult == true){
         response.cookie('loggedIn',true);
         response.cookie('username',request.body.username);
+        request.flash('success_msg', 'Welcome ' + request.body.username);
         response.redirect('/');
       }
       else{
-        response.send("no such user");
+        request.flash('error_msg', 'Incorrect user or password');
+        response.redirect('../users/login')
       }
     })
 
   };
 };
+//Logout
+const logout = (request,response) => {
+  response.clearCookie('loggedIn');
+  response.clearCookie('username');
+  request.flash('success_msg', 'You have logged out');
+  response.redirect('/');
+}
 
  /**
  * ===========================================
@@ -74,5 +80,6 @@ module.exports = {
   newForm,
   create,
   loginForm,
-  login
+  login,
+  logout
 } 

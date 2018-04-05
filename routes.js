@@ -15,6 +15,7 @@ module.exports = (app,db) => {
 	app.get('/users/login', users.loginForm);
   	app.post('/users/login', users.login(db));
   	//Log Out
+  	app.post('/users/logout', users.logout);
 
   	/*
 	*  =========================================

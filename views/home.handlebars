@@ -18,16 +18,23 @@
 	        <ul class="dropdown-menu">
 	          <li><a href="../users/login">Login</a></li>
 	          <li><a href="../users/register">Sign Up</a></li>
+	          <li><a onclick="document.getElementById('myform').submit();">Logout</a></li>
 	        </ul>
 	      </li>
 	    </ul>
 	  </div>
 	</nav>
 
-<form method="POST" action="/search" class="sForm">
-	<input type="text" name="search" placeholder="Search by song, composer, arranger " id="search">
-	<input type="submit" value="Search" name="submSearch" id="submSearch">
-</form>
+	<form id="myform" method="POST" action="/users/logout"><input type="hidden" value="Log Off" name="logOut"></form>
+	
+	{{#if success_msg}}
+		<div class="alert alert-success">{{success_msg}}</div>
+	{{/if}}
+
+	<form method="POST" action="/search" class="sForm">
+		<input type="text" name="search" placeholder="Search by song, composer, arranger " id="search">
+		<input type="submit" value="Search" name="submSearch" id="submSearch">
+	</form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

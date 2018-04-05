@@ -24,13 +24,13 @@
 	  </div>
 	</nav>
 
-<div class="rWrapper">
+{{#if errors}}
+  {{#each errors}}
+    <div class="alert alert-danger">{{msg}}</div>
+  {{/each}}
+{{/if}}
 
-	{{#if errors}}
-      {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>
-      {{/each}}
-	{{/if}}
+<div class="rWrapper">
 
   <h3 class="page-header">Sign Up!</h3>
   <form class="rForm" method="POST" action="/users">

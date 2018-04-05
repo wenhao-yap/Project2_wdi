@@ -18,11 +18,14 @@
 	        <ul class="dropdown-menu">
 	          <li><a href="../users/login">Login</a></li>
 	          <li><a href="../users/register">Sign Up</a></li>
+	          <li><a onclick="document.getElementById('myform').submit();">Logout</a></li>
 	        </ul>
 	      </li>
 	    </ul>
 	  </div>
 	</nav>
+
+	<form id="myform" method="POST" action="/users/logout"><input type="hidden" value="Log Off" name="logOut"></form>
 
 	<main>
 		<h4>Dashboard</h4>

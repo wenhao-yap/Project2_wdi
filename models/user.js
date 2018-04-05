@@ -23,12 +23,18 @@ module.exports = (dbPool) => {
 	      const queryString = "SELECT password from users WHERE username='" + inputInfo.username + "'";
 
 	      dbPool.query(queryString,(error,queryResult) => {
-
-	        let storePass = queryResult.rows[0].password;
-	        // compare between plain text password and stored hashed password
-	        bcrypt.compare(inputInfo.password,storePass,(error, response) => {
-	            callback(error,response);
-	        })
+	      	console.log(queryResult);
+	      	if(queryResult.rows.length > 0){
+		        let storePass = queryResult.rows[0].password;
+		        // compare between plain text password and stored hashed password
+		        bcrypt.compare(inputInfo.password,storePass,(error, response) => {
+		            callback(error,response);
+		        })
+	    	}
+	    	else{
+	    		queryResult = false;
+	    		callback(error,queryResult);
+	    	}
 	      })
 	    }
 	}
