@@ -21,18 +21,19 @@ module.exports = (dbPool) => {
         updateTab.composer,
         updateTab.description,
         updateTab.image,
-        updateTab.lyrics
+        updateTab.lyrics,
       ];
 
       dbPool.query(queryString, values, (err, queryResult) => {
-        const secondQuery = 'Update tabs Set tabnum=$1,arranger=$2,link=$3 WHERE (tabnum=$1)';
+        const secondQuery = 'Update tabs Set tabnum=$1,arranger=$2,link=$3,youtube=$4 WHERE (tabnum=$1)';
         const secondValues = [
         	updateTab.tabnum,
 	        updateTab.arranger,
-	        updateTab.link
+	        updateTab.link,
+          updateTab.youtube
 	      ];
         dbPool.query(secondQuery, secondValues,(err,queryOutput) => {
-          callback(err, queryResult);
+          callback(err, queryOutput);
         });  
       });
     },
@@ -50,12 +51,21 @@ module.exports = (dbPool) => {
         newTab.lyrics
       ];
 
+      console.log(getID);
+
+      console.log(newTab.youtube);
+
       dbPool.query(queryString, values, (err, queryResult) => {
-        const secondQuery = 'INSERT INTO tabs (song_id,user_id,arranger,link) VALUES (' + queryResult.rows[0].id + ',' + getID + ",'" + newTab.arranger + "','" + newTab.link + "')";
+
+        console.log(getID);
+
+        const secondQuery = 'INSERT INTO tabs (song_id,user_id,arranger,link,youtube) VALUES (' + queryResult.rows[0].id + ',' + getID + ",'" + newTab.arranger + "','" + newTab.link + "','" + newTab.youtube + "')";
+
+        console.log(secondQuery);
 
         dbPool.query(secondQuery,(err,queryOutput) => {
           console.log(secondQuery);
-          callback(err, queryResult);
+          callback(err, queryOutput);
         });  
       });
     },
