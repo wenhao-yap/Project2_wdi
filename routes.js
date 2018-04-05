@@ -11,10 +11,10 @@ module.exports = (app,db) => {
 	//Register
 	app.get('/users/register', users.newForm);
 	app.post('/users', users.create(db));
-
-	//Authentication
+	//Login
 	app.get('/users/login', users.loginForm);
   	app.post('/users/login', users.login(db));
+  	//Log Out
 
   	/*
 	*  =========================================

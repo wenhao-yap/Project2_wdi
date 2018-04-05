@@ -5,7 +5,10 @@ const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
 const db = require('./db');
-
+const path = require('path');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 /**
  * ===================================
@@ -26,6 +29,42 @@ const handlebarsConfig = {
 }
 app.engine('handlebars', handlebars(handlebarsConfig));
 app.set('view engine', 'handlebars');
+
+// Express Session
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
+
+// Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
+// Connect Flash
+app.use(flash());
+
+// Global Vars
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.user = req.user || null;
+  next();
+});
 
 /**
  * ===================================

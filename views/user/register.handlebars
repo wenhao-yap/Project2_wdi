@@ -25,7 +25,14 @@
 	</nav>
 
 <div class="rWrapper">
-  <h3>Sign Up!</h3>
+
+	{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+	{{/if}}
+
+  <h3 class="page-header">Sign Up!</h3>
   <form class="rForm" method="POST" action="/users">
   </br>Username:</br>
   <input type="text" name="username">
@@ -33,6 +40,8 @@
   <input type="email" name="email">
   </br>Password:</br>
   <input type="password" name="password">
+</br>Confirm Password:</br>
+  <input type="password" name="password2">
   <button type="submit" name="submit" id="rSubmit">Register</button>
 </form>
 </div>

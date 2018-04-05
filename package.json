@@ -9,10 +9,16 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.1.0",
+    "flash": "^1.1.0",
     "method-override": "^2.3.10",
-    "pg": "^7.4.1"
+    "path": "^0.12.7",
+    "pg": "^7.4.1",
+    "session": "^0.1.0"
   }
 }

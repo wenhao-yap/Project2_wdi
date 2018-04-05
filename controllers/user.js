@@ -10,16 +10,37 @@ const newForm = (request, response) => {
 }
 const create = (db) => {
   return (request, response) => {
-    db.user.create(request.body, (error, queryResult) => {
-      if (error) {
-        response.end('Registration failed! Try again or contact network admin');
-      } else {
-        console.log('User created successfully');
-        response.cookie('loggedIn', true);
-        response.cookie('username', request.body.username);
-        response.redirect('/');
-      }
-    });
+
+    console.log(request.body);
+
+    //Validation
+    request.checkBody('username', 'Username is required').notEmpty();
+    request.checkBody('email', 'Email is required').notEmpty();
+    request.checkBody('email', 'Email is not valid').isEmail();
+    request.checkBody('username', 'Username is required').notEmpty();
+    request.checkBody('password', 'Password is required').notEmpty();
+    request.checkBody('password2', 'Passwords do not match').equals(request.body.password);
+
+    var errors = request.validationErrors();
+
+    if(errors){
+      response.render('user/register',{
+        errors:errors
+      });
+    } else{
+
+      db.user.create(request.body, (error, queryResult) => {
+        if (error) {
+          response.end('Registration failed! Try again or contact network admin');
+        } else {
+          request.flash('success_msg', 'You are registered and can now login');
+          response.redirect('users/login');
+        }
+
+      });
+
+      console.log('PASSED');
+    }
   }
 }
 
