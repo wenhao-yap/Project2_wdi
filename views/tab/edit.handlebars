@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>GuitarTabs</title>
-</head>
-<body>
-    <form method="get" action="/dashboard">
-    <input type="submit" value="dashboard">
-    </form>
+<form method="get" action="/dashboard">
+<input type="submit" value="dashboard">
+</form>
 
-  <h4>Editing: {{tab.name}}</h4>
-  <form method="POST" action="/tabs/{{tab.id}}/edit?_method=PUT">
-    <div>Song:<input name="name" type="text" value="{{tab.name}}"/></div>
-    <div>Composer:<input name="composer" type="text" value="{{tab.composer}}"/></div>
-    <div>Tab Number:<input name="tabnum" type="text" value="{{tab.tabnum}}"/></div>
-    <div>Arranger:<input name="arranger" type="text" value="{{tab.arranger}}"/></div>
-    <div>Image URL:<input name="image" type="text" value="{{tab.image}}"/></div>
-    <div>Lyrics:<input name="lyrics" type="text" value="{{tab.lyrics}}"/></div>
-    <div>Description:<input name="description" type="text" value="{{tab.description}}"/></div>
-    <div>Tab Download:<input name="link" type="text" value="{{tab.link}}"/></div>
-    <input name="submit" type="submit"/>
-  </form>
-</body>
-</html>
+<h4>Editing: {{tab.name}}</h4>
+<form method="POST" action="/tabs/{{tab.id}}/edit?_method=PUT">
+  <div>Song:<input name="name" type="text" value="{{tab.name}}"/></div>
+  <div>Composer:<input name="composer" type="text" value="{{tab.composer}}"/></div>
+  <div>Tab Number:<input name="tabnum" type="text" value="{{tab.tabnum}}"/></div>
+  <div>Arranger:<input name="arranger" type="text" value="{{tab.arranger}}"/></div>
+  <div>Image URL:<input name="image" type="text" value="{{tab.image}}"/></div>
+  <div>Lyrics:<input name="lyrics" type="text" value="{{tab.lyrics}}"/></div>
+  <div>Description:<input name="description" type="text" value="{{tab.description}}"/></div>
+  <div>Tab Download:<input name="link" type="text" value="{{tab.link}}"/></div>
+  <input name="submit" type="submit"/>
+</form>
+

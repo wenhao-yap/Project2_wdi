@@ -25,7 +25,8 @@ app.use(express.static('public'));
 
 const handlebarsConfig = {
 	extname: '.handlebars',
-	layoutsDir: 'views'
+	layoutsDir: 'views',
+  defaultLayout: 'layout'
 }
 app.engine('handlebars', handlebars(handlebarsConfig));
 app.set('view engine', 'handlebars');

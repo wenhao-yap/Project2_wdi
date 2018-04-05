@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>GuitarTabs</title>
-</head>
-<body>
-    <form method="get" action="/dashboard">
-    <input type="submit" value="dashboard">
-    </form>
+<form method="get" action="/dashboard">
+<input type="submit" value="dashboard">
+</form>
 
-  <h3>Adding New Entry</h3>
+<h3>Adding New Entry</h3>
   <form method="POST" action="/tabs">
     {{!-- added temporarily user-id. Not a good way to do this --}}
     <div>USER ID:<input name="userID" type="text"/></div>
@@ -22,5 +15,4 @@
     <div>Tab Download:<input name="link" type="text"></div>
     <input name="submit" type="submit"/>
   </form>
-</body>
-</html>
+

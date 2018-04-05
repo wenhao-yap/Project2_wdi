@@ -1,63 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>GuitarTabs</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-	<nav class="navbar navbar-inverse uNav">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="/">GuitarTabs</a>
-	    </div>
-	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="/">Home</a></li>
-	      <li class="active"><a href = "../dashboard">DashBoard</a></li>
-	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Accounts <span class="caret"></span></a>
-	        <ul class="dropdown-menu">
-	          <li><a href="../users/login">Login</a></li>
-	          <li><a href="../users/register">Sign Up</a></li>
-	          <li><a onclick="document.getElementById('myform').submit();">Logout</a></li>
-	        </ul>
-	      </li>
-	    </ul>
-	  </div>
-	</nav>
-
-	<form id="myform" method="POST" action="/users/logout"><input type="hidden" value="Log Off" name="logOut"></form>
-
-	<main>
-		<h4>Dashboard</h4>
-		<button><a href="/tabs/new">Create New Entry</a></button>
-		<table border="1" id="myTable">
-		<tr>
-			<td>ID(song)</td>
-			<td>Song</td>
-			<td>Composer</td>
-			<td>Arranger</td>
-			<td></td>
-		</tr>
-	      {{#each songs}}
-	    <tr>
-	      <td>{{this.id}}</td>
-	      <td>{{this.name}}</td>
-	      <td>{{this.composer}}</td>
-	      <td>{{this.arranger}}</td>
-	      <td style="border:none">
-	      	<button><a href="/tabs/{{this.id}}">View</a></button>
-	      	<button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
-	      	<form method="POST" action="/tabs/{{id}}?_method=DELETE" id="deleteButt">
-	      		<button type="submit">Delete</button>
-	      	</form>
-	      </td>
-	     </tr>
-	     {{/each}}
-	  </table>
-	</main>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
-
+<h4>Dashboard</h4>
+<button><a href="/tabs/new">Create New Entry</a></button>
+<table border="1" id="myTable">
+<tr>
+	<td>ID(song)</td>
+	<td>Song</td>
+	<td>Composer</td>
+	<td>Arranger</td>
+	<td></td>
+</tr>
+  {{#each songs}}
+<tr>
+  <td>{{this.id}}</td>
+  <td>{{this.name}}</td>
+  <td>{{this.composer}}</td>
+  <td>{{this.arranger}}</td>
+  <td style="border:none">
+  	<button><a href="/tabs/{{this.id}}">View</a></button>
+  	<button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
+  	<form method="POST" action="/tabs/{{id}}?_method=DELETE" id="deleteButt">
+  		<button type="submit">Delete</button>
+  	</form>
+  </td>
+ </tr>
+ {{/each}}
+</table>
