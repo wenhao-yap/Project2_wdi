@@ -11,20 +11,20 @@
 	<td></td>
 </tr>
   {{#each songs}}
-<tr>
-  <td>{{this.id}}</td>
-  <td>{{this.name}}</td>
-  <td>{{this.composer}}</td>
-  <td>{{this.arranger}}</td>
-  {{!-- {{#if user}} --}}
-  <td style="border:none">
-  	<button><a href="/tabs/{{this.id}}">View</a></button>
-  	<button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
-  	<form method="POST" action="/tabs/{{id}}?_method=DELETE" id="deleteButt">
-  		<button type="submit">Delete</button>
-  	</form>
-  </td>
-  {{!-- {{/if}} --}}
- </tr>
+  <tr>
+    <td>{{this.id}}</td>
+    <td>{{this.name}}</td>
+    <td>{{this.composer}}</td>
+    <td>{{this.arranger}}</td>
+    {{#if ../user}}
+    <td style="border:none">
+    	<button><a href="/tabs/{{this.id}}">View</a></button>
+    	<button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
+    	<form method="POST" action="/tabs/{{id}}?_method=DELETE" id="deleteButt">
+    		<button type="submit">Delete</button>
+    	</form>
+    </td>
+    {{/if}}
+   </tr>
  {{/each}}
 </table>
