@@ -11,8 +11,6 @@ const newForm = (request, response) => {
 const create = (db) => {
   return (request, response) => {
 
-    console.log(request.body);
-
     //Validation
     request.checkBody('username', 'Username is required').notEmpty();
     request.checkBody('email', 'Email is required').notEmpty();
@@ -49,8 +47,7 @@ const login = (db) => {
   return (request, response) => {
     db.user.login(request.body, (error,queryResult) => {
       if(queryResult == true){
-        response.cookie('loggedIn',true);
-        response.cookie('username',request.body.username);
+        request.session.username = request.body.username;
         request.flash('success_msg', 'Welcome ' + request.body.username);
         response.redirect('/');
       }
@@ -64,8 +61,6 @@ const login = (db) => {
 };
 //Logout
 const logout = (request,response) => {
-  response.clearCookie('loggedIn');
-  response.clearCookie('username');
   request.flash('success_msg', 'You have logged out');
   response.redirect('/');
 }

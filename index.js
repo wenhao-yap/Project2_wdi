@@ -1,6 +1,7 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
@@ -8,7 +9,6 @@ const db = require('./db');
 const path = require('path');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
-const session = require('express-session');
 
 /**
  * ===================================
@@ -20,7 +20,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static('public'));
 
 const handlebarsConfig = {
@@ -33,9 +33,9 @@ app.set('view engine', 'handlebars');
 
 // Express Session
 app.use(session({
-    secret: 'secret',
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    secret: 'secret'
 }));
 
 // Express Validator
@@ -63,7 +63,6 @@ app.use(flash());
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
-  res.locals.user = req.user || null;
   next();
 });
 
@@ -76,7 +75,8 @@ app.use(function (req, res, next) {
 require('./routes')(app, db);
 
 app.get('/',(request,response) => {
-	response.render('home');
+  console.log("current user: " + request.session.username);
+  response.render('home');
 })
 
 app.get('*', (request, response) => {
