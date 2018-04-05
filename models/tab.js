@@ -35,12 +35,12 @@ module.exports = (dbPool) => {
       });
     },
 
-    create: (newTab, callback) => {
+    create: (newTab,getID, callback) => {
       console.log(newTab);
 
       const queryString = 'INSERT INTO songs (user_id,name,composer,description,image,lyrics) VALUES ($1,$2,$3,$4,$5,$6) returning id';
       const values = [
-        newTab.userID,
+        getID,
         newTab.name,
         newTab.composer,
         newTab.description,
@@ -49,7 +49,7 @@ module.exports = (dbPool) => {
       ];
 
       dbPool.query(queryString, values, (err, queryResult) => {
-        const secondQuery = 'INSERT INTO tabs (song_id,user_id,arranger,link) VALUES (' + queryResult.rows[0].id + ',' + newTab.userID + ",'" + newTab.arranger + "','" + newTab.link + "')";
+        const secondQuery = 'INSERT INTO tabs (song_id,user_id,arranger,link) VALUES (' + queryResult.rows[0].id + ',' + getID + ",'" + newTab.arranger + "','" + newTab.link + "')";
 
         dbPool.query(secondQuery,(err,queryOutput) => {
           console.log(secondQuery);

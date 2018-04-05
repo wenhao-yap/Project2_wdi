@@ -63,6 +63,7 @@ app.use(flash());
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
+  res.locals.user = req.session.username || null;
   next();
 });
 
@@ -75,7 +76,12 @@ app.use(function (req, res, next) {
 require('./routes')(app, db);
 
 app.get('/',(request,response) => {
-  console.log("current user: " + request.session.username);
+  if(request.session.username){
+    console.log("current user: " + request.session.username + " with user id of " + request.session.userID);
+  }
+  else{
+    console.log("no user logged in");
+  }
   response.render('home');
 })
 

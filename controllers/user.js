@@ -45,9 +45,10 @@ const loginForm = (request, response) => {
 };
 const login = (db) => {
   return (request, response) => {
-    db.user.login(request.body, (error,queryResult) => {
+    db.user.login(request.body, (error,queryResult,getID) => {
       if(queryResult == true){
         request.session.username = request.body.username;
+        request.session.userID = getID;
         request.flash('success_msg', 'Welcome ' + request.body.username);
         response.redirect('/');
       }
@@ -62,6 +63,7 @@ const login = (db) => {
 //Logout
 const logout = (request,response) => {
   request.flash('success_msg', 'You have logged out');
+  request.session.username = undefined;
   response.redirect('/');
 }
 

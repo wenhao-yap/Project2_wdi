@@ -20,14 +20,15 @@ module.exports = (dbPool) => {
 
 	    login: (inputInfo, callback) => {
 	      // TODO: Add logic here
-	      const queryString = "SELECT password from users WHERE username='" + inputInfo.username + "'";
+	      const queryString = "SELECT password,id from users WHERE username='" + inputInfo.username + "'";
 
-	      dbPool.query(queryString,(error,queryResult) => {
+	      dbPool.query(queryString,(error,queryResult,getID) => {
 	      	if(queryResult.rows.length > 0){
+	      		let getID = queryResult.rows[0].id;
 		        let storePass = queryResult.rows[0].password;
 		        // compare between plain text password and stored hashed password
 		        bcrypt.compare(inputInfo.password,storePass,(error, response) => {
-		            callback(error,response);
+		            callback(error,response,getID);
 		        })
 	    	}
 	    	else{

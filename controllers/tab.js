@@ -50,7 +50,7 @@ const createForm = (request, response) => {
 
 const create = (db) => {
   return (request, response) => {
-    db.tab.create(request.body, (error, queryResult) => {
+    db.tab.create(request.body,request.session.userID,(error, queryResult) => {
       if (queryResult.rowCount >= 1) {
         console.log('Entry added successfully');
         response.redirect('/dashboard');
