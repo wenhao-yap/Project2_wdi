@@ -1,17 +1,33 @@
-<form method="get" action="/dashboard">
-<input type="submit" value="dashboard">
-</form>
-
-<h3>Adding New Entry</h3>
-  <form method="POST" action="/tabs">
-    <div>Song:<input name="name" type="text"/></div>
-    <div>Composer:<input name="composer" type="text"/></div>
-    <div>Arranger:<input name="arranger" type="text"></div>
-    <div>Image URL:<input name="image" type="text"></div>
-    <div>Lyrics:<input name="lyrics" type="text"></div>
-    <div>Description:<input name="description" type="text"/></div>
-    <div>Tab Download:<input name="link" type="text"></div>
-    <div>Youtube:<input name="youtube" type="text"></div>
-    <input name="submit" type="submit"/>
-  </form>
-
+<div class="rWrapper">
+    <h3>Adding New Entry</h3>
+    <form method="POST" action="/tabs">
+        <div class="form-group">
+            <input name="name" type="text" class="form-control" placeholder="Enter song name">
+        </div>
+        <div class="form-group">
+            <input name="composer" type="text" class="form-control" placeholder="Enter composer ">
+        </div>
+        <div class="form-group">
+            <input name="arranger" type="text" class="form-control" placeholder="Enter tab/score arranger">
+        </div>
+        <div class="form-group">
+            <input name="image" type="text" class="form-control" placeholder="Enter image URL">
+        </div>
+        <div class="form-group">
+            <input name="lyrics" type="text" class="form-control" placeholder="Enter lyrics">
+        </div>
+        <div class="form-group">
+            <input name="description" type="text" class="form-control" placeholder="Enter description">
+        </div>
+        <div class="form-group">
+            <input name="link" type="text" class="form-control" placeholder="Enter tab download URL">
+        </div>
+        <div class="form-group">
+            <input name="youtube" type="text" class="form-control" placeholder="Enter youtube URL">
+        </div>
+        <div class="form-group">
+            <input name="submit" type="submit">
+            <button><a href="/dashboard">Cancel</a></button>
+        </div>
+    </form>
+</div>

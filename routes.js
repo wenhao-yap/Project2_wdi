@@ -32,10 +32,6 @@ module.exports = (app,db) => {
 	*/
 	//search 
 	app.post('/search', tabs.search(db));
-	//songs list
-
-	//open song menu to see tabs
-
 	//Edit a current tab
 	app.get('/tabs/:id/edit', tabs.updateForm(db));
 	app.put('/tabs/:id/edit', tabs.update(db));
