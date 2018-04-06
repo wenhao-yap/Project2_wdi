@@ -2,54 +2,59 @@
 <html>
 <head>
 	<title>GuitarTabs</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<nav class="navbar navbar-inverse uNav">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="/">GuitarTabs</a>
-	    </div>
-	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="/">Home</a></li>
-	      <li><a href = "../dashboard">Library</a></li>
-	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage Account <span class="caret"></span></a>
-	        <ul class="dropdown-menu">
-	          {{#if user}}
-	          	<li><a id="logout">Logout</a></li>
-	          {{else}}
-	          	<li><a href="../users/login">Login</a></li>
-	          	<li><a href="../users/register">Sign Up</a></li>
-	          {{/if}}
-
-	        </ul>
-	      </li>
-	    </ul>
+	<div class="ui menu">
+		<div class="ui violet header item">GuitarTabs</div>
+		<div class="right menu">
+	  		<a class="item" href="/">Home</a>
+	    	<a class="item" href = "../dashboard">Library</a>
+	  		<div class="ui pointing dropdown link item">
+	  			<i class="id card icon"></i>
+		    	<span class="text">Account</span>
+		    	<i class="dropdown icon"></i>
+		   		<div class="menu">
+		    		<div class="header">Settings</div>
+		      		{{#if user}}
+		      			<div class="item"><a id="logout">Logout</a></div>
+		      		{{else}}
+		      			<div class="item"><a href="../users/login">Login</a></div>
+		      			<div class="item"><a href="../users/register">Sign Up</a></div>
+		      		{{/if}}
+		   		</div>
+			</div>
 	  </div>
-	</nav>
+	</div>
 
-	<div class="container">
-		<div class="row">
-	        <div class="col-lg-12">
+	<div class="ui container">
+		<div class="ui column centered grid">
         	  <form id="myform" method="POST" action="/users/logout">
         	  	<input type="hidden" value="Log Off" name="logOut">
         	  </form>
-
-	          {{#if success_msg}}
-	            <div class="alert alert-success">{{success_msg}}</div>
-	          {{/if}}
-	          {{#if error_msg}}
-	            <div class="alert alert-danger">{{error_msg}}</div>
-	          {{/if}}
-	          
-	          {{{body}}}
-	     	</div>
-	     </div>
+    	  	  <div class = "six wide column">
+		          {{#if success_msg}}
+		            <div class="ui success message">
+		            	<div class="header">Info</div>
+		            	<p>{{success_msg}}</p>
+		        	</div>
+		          {{/if}}
+		          {{#if error_msg}}
+		            <div class="ui error message">
+		            	<div class="header">Error</div>
+		            	<p>{{error_msg}}</p>
+		            </div>
+		          {{/if}}
+	          </div>
+		      <div class = "fourteen wide column">	          
+	          	{{{body}}}
+	    	  </div>
+	    </div>
     </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="/script/script.js"></script> 
 </body>

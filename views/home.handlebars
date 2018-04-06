@@ -1,13 +1,28 @@
-<form method="POST" action="/search" class="sForm">
-	<input type="text" name="search" placeholder="Search by song, composer, arranger " id="search" required>
-	<input type="submit" value="Search" name="submSearch" id="submSearch">
-	<div class="form-group">
-	    <label for="exampleFormControlSelect2">Search libraries</label>
-	    <select multiple class="form-control" id="exampleFormControlSelect2" name="option">
-	      <option selected>GuitarTabs</option>
-	      <option>Songsterr</option>
-	      <option>Ultimate Guitar</option>
-	    </select>
-	    <small>Disclaimer: Only song names work for Songsterr</small>
-	 </div>
-</form>
+<div class="ui middle aligned center aligned grid" id="home">	  
+    <form class="ui large form" method="POST" action="/search">
+    	<div class="field">
+			<input type="text" name="search" placeholder="Search by song, composer, arranger " id="search" required>
+		</div>
+		<div class="field">
+			<div class="five wide column">
+				<label id="home_select">Select libraries:</label>
+				<select class="ui search dropdown" name="option">
+		      		<option>GuitarTabs</option>
+		      		<option>Songsterr</option>
+		      		<option>Ultimate Guitar</option>
+	      		</select>
+	      		<button class="ui pink basic button" name="submSearch" type="submit">
+				  <i class="search icon"></i>
+				  Search
+				</button>
+      		</div>
+		</div>
+    </form>
+  
+  	<div class="six wide row">
+		<div class="ui info message">
+	  	<i class="close icon"></i>
+	  	Disclaimer: Only song names work for Songsterr &nbsp;  
+		</div>
+	</div>
+</div>

@@ -10,28 +10,14 @@ const newForm = (request, response) => {
 }
 const create = (db) => {
   return (request, response) => {
-
-    //Validation
-    request.checkBody('email', 'Email is not valid').isEmail();
-    request.checkBody('password2', 'Passwords do not match').equals(request.body.password);
-    let errors = request.validationErrors();
-
-    if(errors){
-      response.render('user/register',{
-        errors:errors
-      });
-    } else{
-
-      db.user.create(request.body, (error, queryResult) => {
-        if (error) {
-          response.end('Registration failed! Try again or contact network admin');
-        } else {
-          request.flash('success_msg', 'You are registered and can now login');
-          response.redirect('users/login');
-        }
-
-      });
-    }
+    db.user.create(request.body, (error, queryResult) => {
+      if (error) {
+        response.end('Registration failed! Try again or contact network admin');
+      } else {
+        request.flash('success_msg', 'You are registered and can now login');
+        response.redirect('users/login');
+      }
+    });   
   }
 }
 

@@ -20,5 +20,6 @@ CREATE TABLE IF NOT EXISTS tabs (
   song_id int REFERENCES songs(id),
   user_id int REFERENCES users(id),
   arranger varchar(255),
-  link varchar(255)
+  link varchar(255),
+  youtube varchar(255)
 );

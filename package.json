@@ -19,6 +19,7 @@
     "method-override": "^2.3.10",
     "path": "^0.12.7",
     "pg": "^7.4.1",
+    "semantic-ui": "^2.3.1",
     "session": "^0.1.0",
     "ultimate-guitar-scraper": "^1.0.1"
   }
