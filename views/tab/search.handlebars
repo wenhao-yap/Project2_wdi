@@ -14,7 +14,7 @@
 				{{#each searchResult}}
 				<tr>
 					<td>{{this.id}}</td>
-					<td><a href="http://www.songsterr.com/a/wa/song?id={{this.id}}">{{this.title}}</a></td>
+					<td><a href="http://www.songsterr.com/a/wa/song?id={{this.id}}" target="_blank">{{this.title}}</a></td>
 					<td>{{this.artist.name}}</td>
 				</tr>
 				{{/each}}
@@ -31,7 +31,7 @@
 			<tbody>
 				{{#each searchResult}}
 				<tr>
-					<td><a href="{{this.url}}">{{this.name}}</a></td>
+					<td><a href="{{this.url}}" target="_blank">{{this.name}}</a></td>
 					<td>{{this.rating}}</td>
 					<td>{{this.numberRates}}</td>
 				</tr>
@@ -50,7 +50,7 @@
 		    	{{#each searchResult}}
 		    	<tr>
 			       	<td>{{this.id}}</td>
-			        <td><a href="/tabs/{{this.id}}">{{this.name}}</a></td>
+			        <td><a href="/tabs/{{this.id}}" target="_blank">{{this.name}}</a></td>
 			        <td>{{this.composer}}</td>
 			        <td>{{this.arranger}}</td>
 		    	</tr>
