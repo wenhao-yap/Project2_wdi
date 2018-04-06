@@ -1,33 +1,48 @@
-<div class="rWrapper">
-    <h3>Adding New Entry</h3>
-    <form method="POST" action="/tabs">
-        <div class="form-group">
-            <input name="name" type="text" class="form-control" placeholder="Enter song name">
+<div class = "ui grid">
+    <div class="ten wide column centered left aligned row">
+        <div class="ui segment">
+            <div class="ui form">
+                <h3 class="centered aligned">Adding New Entry:</h3>
+                <form method="POST" action="/tabs">
+                    <div class="field">
+                        <label>Song:</label>
+                        <input name="name" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Composer:</label>
+                        <input name="composer" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Arranger:</label>
+                        <input name="arranger" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Image URL:</label>
+                        <textarea rows="2" name="image"></textarea>
+                    </div>
+                    <div class="field">
+                        <label>Lyrics:</label>
+                        <textarea name="lyrics"></textarea>
+                    </div>
+                    <div class="field">
+                        <label>Description:</label>
+                        <textarea name="description"></textarea>
+                    </div>
+                    <div class="field">
+                        <label>Tab Download:</label>
+                        <input name="link" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Youtube:</label>
+                        <input name="youtube" type="text">
+                    </div>
+                    <div class="field">
+                        <input name="submit" type="submit" value="Save Changes" />
+                        <button><a href="/dashboard">Cancel</a></button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <input name="composer" type="text" class="form-control" placeholder="Enter composer ">
-        </div>
-        <div class="form-group">
-            <input name="arranger" type="text" class="form-control" placeholder="Enter tab/score arranger">
-        </div>
-        <div class="form-group">
-            <input name="image" type="text" class="form-control" placeholder="Enter image URL">
-        </div>
-        <div class="form-group">
-            <input name="lyrics" type="text" class="form-control" placeholder="Enter lyrics">
-        </div>
-        <div class="form-group">
-            <input name="description" type="text" class="form-control" placeholder="Enter description">
-        </div>
-        <div class="form-group">
-            <input name="link" type="text" class="form-control" placeholder="Enter tab download URL">
-        </div>
-        <div class="form-group">
-            <input name="youtube" type="text" class="form-control" placeholder="Enter youtube URL">
-        </div>
-        <div class="form-group">
-            <input name="submit" type="submit">
-            <button><a href="/dashboard">Cancel</a></button>
-        </div>
-    </form>
-</div>
+    </div>
+<div>
+

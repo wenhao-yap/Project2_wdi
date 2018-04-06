@@ -1,31 +1,69 @@
-<h2>Dashboard</h2>
-{{#if user}}
-<button><a href="/tabs/new">Submit New Tab/Score</a></button>
-{{/if}}
-<table id="myTable">
-    <thead>
-    	<th>ID(song)</th>
-    	<th>Song</th>
-    	<th>Composer</th>
-    	<th>Arranger</th>
-    </thead>
-    <tbody>
-      {{#each songs}}
-      <tr>
-        <td>{{this.id}}</td>
-        <td><a href="/tabs/{{this.id}}">{{this.name}}</a></td>
-        <td>{{this.composer}}</td>
-        <td>{{this.arranger}}</td>
-        {{#if ../user}}
-        <td>
-        	<button><a href="/tabs/{{this.id}}">View</a></button>
-        	<button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
-        	<form method="POST" action="/tabs/{{id}}?_method=DELETE" id="deleteButt">
-        		<button type="submit">Delete</button>
-        	</form>
-        </td>
-        {{/if}}
-       </tr>
-       {{/each}}
-    </tbody> 
-</table>
+<div class = "ui grid"> 
+    {{#if user}}
+    <div class="centered row">
+        <div class="sixteen wide column">
+            <h3 class="ui top attached header centered aligned">
+              Hi {{username}}, welcome to Dashboard
+            </h3>
+            <div class="ui attached segment">           
+                <table id="myTable">
+                    <thead>
+                        <th>ID(song)</th>
+                        <th>Song</th>
+                        <th>Composer</th>
+                        <th>Arranger</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                      {{#each songs}}
+                      <tr>
+                        <td>{{this.id}}</td>
+                        <td><a href="/tabs/{{this.id}}">{{this.name}}</a></td>
+                        <td>{{this.composer}}</td>
+                        <td>{{this.arranger}}</td>
+                        <td>
+                            <button><a href="/tabs/{{this.id}}">View</a></button>
+                            <button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
+                            <form method="POST" action="/tabs/{{id}}?_method=DELETE">
+                                <button type="submit" id="deleteButt">Delete</button>
+                            </form>
+                        </td>
+                       </tr>
+                       {{/each}}
+                    </tbody> 
+                </table>
+            </div>
+            <a class="ui bottom attached button" href="/tabs/new">
+                <i class="plus circle icon"></i>Submit new tab/score
+            </a>
+        </div>
+    </div>
+    {{else}}
+        {{#each songs}}
+        <div class="four wide column">
+            <div class="ui link card">                
+                <a class="image" href="/tabs/{{this.id}}">
+                  <img src="{{this.image}}">
+                </a> 
+                <div class="content">
+                    <a class="header" href="/tabs/{{this.id}}">{{this.name}}</a>
+                    <div class="meta">
+                        <span class="date">{{this.composer}}</span>
+                    </div>
+                    <div class="meta">
+                        <span class="date">{{this.arranger}}</span>
+                    </div>
+                </div>
+                <div class="ui bottom attached button">
+                    <a href="/tabs/{{this.id}}">
+                      <i class="hand point down outline icon"></i>
+                      View more details
+                    </a>
+                </div> 
+            </div>           
+        </div>
+        {{/each}} 
+    {{/if}}
+</div>
+
+

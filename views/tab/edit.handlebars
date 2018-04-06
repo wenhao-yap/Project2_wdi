@@ -1,27 +1,51 @@
-<div class="rWrapper">
-  <h3 class="page-header">Editing: {{tab.name}}</h3>
-  <form method="POST" action="/tabs/{{tab.id}}/edit?_method=PUT">
-    <div class="form-group">Song:
-      <input name="name" type="text" class="form-control" value="{{tab.name}}"/></div>
-    <div class="form-group">Composer:
-      <input name="composer" type="text" class="form-control" value="{{tab.composer}}"/></div>
-    <div class="form-group">Tab Number:
-      <input name="tabnum" type="text" class="form-control" value="{{tab.tabnum}}"/></div>
-    <div class="form-group">Arranger:
-      <input name="arranger" type="text" class="form-control" value="{{tab.arranger}}"/></div>
-    <div class="form-group">Image URL:
-      <input name="image" type="text" class="form-control" value="{{tab.image}}"/></div>
-    <div class="form-group">Lyrics:
-      <input name="lyrics" type="text" class="form-control" value="{{tab.lyrics}}"/></div>
-    <div class="form-group">Description:
-      <input name="description" type="text" class="form-control" value="{{tab.description}}"/></div>
-    <div class="form-group">Tab Download:
-      <input name="link" type="text" class="form-control" value="{{tab.link}}"/></div>
-    <div class="form-group">Youtube:
-      <input name="youtube" type="text" class="form-control" value="{{tab.youtube}}"/></div>
-    <div class="form-group">
-      <input name="submit" id="rSubmit" type="submit"/>
-      <button><a href="/dashboard">Cancel</a></button>
+<div class = "ui grid">
+    <div class="ten wide column centered left aligned row">
+        <div class="ui segment">
+            <div class="ui form">
+                <h3 class="centered aligned">Editing: {{tab.name}}</h3>
+                <form method="POST" action="/tabs/{{tab.id}}/edit?_method=PUT">
+                    <div class="field">
+                        <label>Song:</label>
+                        <input name="name" type="text" value="{{tab.name}}"/>
+                    </div>
+                    <div class="field">
+                        <label>Composer:</label>
+                        <input name="composer" type="text" value="{{tab.composer}}"/>
+                    </div>
+                    <div class="field">
+                        <label>Tab Number:</label>
+                        <input name="tabnum" type="text" value="{{tab.tabnum}}"/>
+                    </div>
+                    <div class="field">
+                        <label>Arranger:</label>
+                        <input name="arranger" type="text" value="{{tab.arranger}}"/>
+                    </div>
+                    <div class="field">
+                        <label>Image URL:</label>
+                        <textarea rows="2" name="image">{{tab.image}}</textarea>
+                    </div>
+                    <div class="field">
+                        <label>Lyrics:</label>
+                        <textarea name="lyrics">{{tab.lyrics}}</textarea>
+                    </div>
+                    <div class="field">
+                        <label>Description:</label>
+                        <textarea name="description">{{tab.description}}</textarea>
+                    </div>
+                    <div class="field">
+                        <label>Tab Download:</label>
+                        <input name="link" type="text" value="{{tab.link}}"/>
+                    </div>
+                    <div class="field">
+                        <label>Youtube:</label>
+                        <input name="youtube" type="text" value="{{tab.youtube}}"/>
+                    </div>
+                    <div class="field">
+                        <input name="submit" type="submit" value="Save Changes" />
+                        <button><a href="/dashboard">Cancel</a></button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </form>
 <div>

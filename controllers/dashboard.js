@@ -9,7 +9,8 @@ const editor = (db) => {
   return (request, response) => {
   	db.dashboard.editor((error,queryResult) => {
   		let context = {
-  			songs: queryResult.rows
+  			songs: queryResult.rows,
+  			username: request.session.username
   		}
   		response.render('dashboard',context);
   	});

@@ -14,18 +14,6 @@
 	margin-left: 10px;
 }
 
-/**
- * ===================================
- * Register/Login
- * ===================================
- */
- .rWrapper{
- 	width: 400px;
- 	border:1px solid black;
- 	padding:0px 30px;
- 	margin: 0px auto;
- }
-
  /**
  * ===================================
  * Dashboard

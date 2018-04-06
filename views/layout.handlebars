@@ -8,7 +8,11 @@
 </head>
 <body>
 	<div class="ui menu">
-		<div class="ui violet header item">GuitarTabs</div>
+		<div class="ui item">
+			<a href="/">
+				<i class="play circle outline icon"></i>GuitarTabs
+			</a>
+		</div>
 		<div class="right menu">
 			<div class="item">
 				<i class="home icon"></i>
@@ -16,7 +20,11 @@
 	  		</div>
 	  		<div class="item">
 				<i class="itunes note icon"></i>
-	  			<a href="../dashboard">Library</a>
+				{{#if user}}	
+					<a href="../dashboard">Dashboard</a>
+				{{else}}
+		  			<a href="../dashboard">Library</a>
+	  			{{/if}}
 	  		</div>
 	  		<div class="ui pointing dropdown link item">
 	  			<i class="id card icon"></i>
