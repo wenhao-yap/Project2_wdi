@@ -25,3 +25,12 @@
 #viewWrapper{
 	height: 349px;
 }
+
+/**
+* ===================================
+* Edit tab
+* ===================================
+*/
+#dashboardWrapper{
+	margin-bottom:15px;
+}
