@@ -16,6 +16,12 @@ if(logout){
 		document.getElementById('myform').submit();
 	})
 }
+let logout2 = document.getElementById('logout2');
+if(logout2){
+  logout2.addEventListener("click", function(){
+    document.getElementById('myform').submit();
+  })
+}
 
 $(document).ready(function() {
 	let myTable = document.getElementById("myTable");
