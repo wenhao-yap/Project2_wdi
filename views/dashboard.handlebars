@@ -22,9 +22,9 @@
                         <td>{{this.composer}}</td>
                         <td>{{this.arranger}}</td>
                         <td>
-                            <button><a href="/tabs/{{this.id}}">View</a></button>
-                            <button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
                             <form method="POST" action="/tabs/{{id}}?_method=DELETE">
+                                <button><a href="/tabs/{{this.id}}">View</a></button>
+                                <button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
                                 <button type="submit" id="deleteButt">Delete</button>
                             </form>
                         </td>

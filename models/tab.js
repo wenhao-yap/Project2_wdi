@@ -27,6 +27,7 @@ module.exports = (dbPool) => {
         updateTab.lyrics,
         songID
       ];
+      console.log(updateTab.lyrics);
 
       dbPool.query(queryString, values, (err, queryResult) => {
         const secondQuery = 'Update tabs\
@@ -47,8 +48,6 @@ module.exports = (dbPool) => {
     },
 
     create: (newTab,getID, callback) => {
-      console.log(newTab);
-
       const queryString = 'INSERT INTO songs (user_id,name,composer,description,image,lyrics) VALUES ($1,$2,$3,$4,$5,$6) returning id';
       const values = [
         getID,
@@ -63,10 +62,7 @@ module.exports = (dbPool) => {
 
         const secondQuery = 'INSERT INTO tabs (song_id,user_id,arranger,link,youtube) VALUES (' + queryResult.rows[0].id + ',' + getID + ",'" + newTab.arranger + "','" + newTab.link + "','" + newTab.youtube + "')";
 
-        console.log(secondQuery);
-
         dbPool.query(secondQuery,(err,queryOutput) => {
-          console.log(secondQuery);
           callback(err, queryOutput);
         });  
       });
@@ -106,7 +102,6 @@ module.exports = (dbPool) => {
         const queryString = 'Select * from songs INNER JOIN tabs on tabs.song_id = songs.id WHERE lower(songs.name) LIKE lower($1) OR lower(songs.composer) LIKE lower($1) OR lower(tabs.arranger) LIKE lower($1)';
         const values = [input.search];
         dbPool.query(queryString,values, (error, queryResult) => {
-          console.log(queryResult.rows);
           callback(error,queryResult);
         });
       }

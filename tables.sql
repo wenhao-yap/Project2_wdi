@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS songs (
   composer varchar(255),
   description varchar(255),
   image varchar(255),
-  lyrics varchar(255)
+  lyrics text
 );
 
 CREATE TABLE IF NOT EXISTS tabs (

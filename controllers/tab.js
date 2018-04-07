@@ -57,11 +57,18 @@ const createForm = (request, response) => {
 const create = (db) => {
   return (request, response) => {
     db.tab.create(request.body,request.session.userID,(error, queryResult) => {
-      if (queryResult.rowCount >= 1) {
+      if (queryResult) {
         console.log('Entry added successfully');
         response.redirect('/dashboard');
       } else {
         console.log('Entry failed to be added');
+        if(request.session.username){
+          console.log('Error check on user has failed. ' + request.session.username + ' is logged in.');
+        }
+        else{
+          console.log('Error check success. Problem caused by no user logged in');
+        }        
+        response.render('404');
       }
     })
   };
@@ -69,7 +76,6 @@ const create = (db) => {
 
 const search = (db) => {
   return (request, response) => {
-    console.log(request.body);
     const searchterm = request.body.search;
     db.tab.search(request.body, searchterm, (error, queryResult) => {
       if (queryResult.rowCount >= 1) {
