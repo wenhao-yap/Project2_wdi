@@ -1,6 +1,9 @@
 #logout{
 	cursor:pointer;
 }
+#wrapper{
+	margin-top: 50px;
+}
 
 /**
  * ===================================

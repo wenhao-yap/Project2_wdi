@@ -41,7 +41,7 @@
     {{else}}
         {{#each songs}}
         <div class="four wide column">
-            <div class="ui link card">                
+            <div class="ui link raised card">                
                 <a class="image" href="/tabs/{{this.id}}">
                   <img src="{{this.image}}">
                 </a> 
@@ -50,16 +50,10 @@
                     <div class="meta">
                         <span class="date">{{this.composer}}</span>
                     </div>
-                    <div class="meta">
-                        <span class="date">{{this.arranger}}</span>
+                    <div class="description">
+                        Arranger: {{this.arranger}}
                     </div>
                 </div>
-                <div class="ui bottom attached button">
-                    <a href="/tabs/{{this.id}}">
-                      <i class="hand point down outline icon"></i>
-                      View more details
-                    </a>
-                </div> 
             </div>           
         </div>
         {{/each}} 

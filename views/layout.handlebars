@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<div class="ui menu">
+	<div class="ui fixed menu">
 		<div class="ui item">
 			<a href="/">
 				<i class="play circle outline icon"></i>GuitarTabs
@@ -43,12 +43,12 @@
 	  </div>
 	</div>
 
-	<div class="ui container">
+	<div class="ui fixed container">
 		<div class="ui column centered grid">
         	  <form id="myform" method="POST" action="/users/logout">
         	  	<input type="hidden" value="Log Off" name="logOut">
         	  </form>
-    	  	  <div class = "six wide column">
+    	  	  <div class = "six wide column" id="wrapper">
 		          {{#if success_msg}}
 		            <div class="ui success message">
 		            	<i class="close icon"></i>

@@ -14,24 +14,32 @@ module.exports = (dbPool) => {
       });
     },
 
-    update: (updateTab, callback) => {
-      const queryString = 'Update songs Set name=$1,composer=$2,description=$3,image=$4,lyrics=$5 WHERE (name=$1)';
+    update: (updateTab,songID, callback) => {
+      const queryString = 'Update songs\
+        Set name=$1,composer=$2,description=$3,image=$4,lyrics=$5\
+        FROM tabs\
+        WHERE tabs.song_id = songs.id AND songs.id=$6';
       const values = [
         updateTab.name,
         updateTab.composer,
         updateTab.description,
         updateTab.image,
         updateTab.lyrics,
+        songID
       ];
 
       dbPool.query(queryString, values, (err, queryResult) => {
-        const secondQuery = 'Update tabs Set tabnum=$1,arranger=$2,link=$3,youtube=$4 WHERE (tabnum=$1)';
+        const secondQuery = 'Update tabs\
+          Set tabnum=$1,arranger=$2,link=$3,youtube=$4\
+          FROM songs\
+          WHERE tabs.song_id = songs.id AND songs.id=$5';
         const secondValues = [
-        	updateTab.tabnum,
-	        updateTab.arranger,
-	        updateTab.link,
-          updateTab.youtube
-	      ];
+          updateTab.tabnum,
+          updateTab.arranger,
+          updateTab.link,
+          updateTab.youtube,
+          songID
+        ];
         dbPool.query(secondQuery, secondValues,(err,queryOutput) => {
           callback(err, queryOutput);
         });  
@@ -51,13 +59,7 @@ module.exports = (dbPool) => {
         newTab.lyrics
       ];
 
-      console.log(getID);
-
-      console.log(newTab.youtube);
-
       dbPool.query(queryString, values, (err, queryResult) => {
-
-        console.log(getID);
 
         const secondQuery = 'INSERT INTO tabs (song_id,user_id,arranger,link,youtube) VALUES (' + queryResult.rows[0].id + ',' + getID + ",'" + newTab.arranger + "','" + newTab.link + "','" + newTab.youtube + "')";
 

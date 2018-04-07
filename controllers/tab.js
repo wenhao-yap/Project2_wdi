@@ -38,8 +38,14 @@ const updateForm = (db) => {
 
 const update = (db) => {
   return (request, response) => {
-    db.tab.update(request.body, (error,queryResult) => {
-      response.redirect('/tabs/' + request.params.id);
+    db.tab.update(request.body,request.params.id, (error,queryResult) => {
+      if(error){
+        console.error(error);
+      }
+      else{
+        console.log("Tab is updated successfully")
+        response.redirect('/dashboard');
+      }
     })
   };
 };
