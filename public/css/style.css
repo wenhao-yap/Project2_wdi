@@ -2,7 +2,7 @@
 	cursor:pointer;
 }
 #wrapper{
-	margin-top: 50px;
+	margin-top: 65px;
 }
 
 /**
@@ -10,7 +10,7 @@
 * HOME
 * ===================================
 */
-#home{
+#shiftTop{
 	margin-top: 50px;
 }
 #home_select{

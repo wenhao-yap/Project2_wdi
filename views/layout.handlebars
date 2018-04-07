@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<div class="ui fixed menu">
+	<div class="ui inverted fixed menu">
 		<div class="ui item">
 			<a href="/">
 				<i class="play circle outline icon"></i>GuitarTabs
@@ -25,18 +25,29 @@
 				{{else}}
 		  			<a href="../dashboard">Library</a>
 	  			{{/if}}
-	  		</div>
+	  		</div>	  		
+			<div class="item">
+	  			<form class="ui mini form" method="POST" action="/search">
+  					<div class="ui search">
+						<div class="ui inverted left icon input">
+						    <i class="search icon"></i>
+						    <input type="text" placeholder="Search GuitarTabs.." name="search">
+						</div>
+					</div>
+			    </form>
+			</div>	  		
 	  		<div class="ui pointing dropdown link item">
 	  			<i class="settings icon"></i>
 		    	<span class="text">Account</span>
 		    	<i class="dropdown icon"></i>
 		   		<div class="menu">
 		    		<div class="header">Settings</div>
+		    		<div class="divider"></div>
 		      		{{#if user}}
-		      			<div class="item"><a id="logout">Logout</a></div>
+		      			<div class="item"><a id="logout" style="color: black">Logout</a></div>
 		      		{{else}}
-		      			<div class="item"><a href="../users/login">Login</a></div>
-		      			<div class="item"><a href="../users/register">Sign Up</a></div>
+		      			<div class="item"><a href="../users/login" style="color: black">Login</a></div>
+		      			<div class="item"><a href="../users/register" style="color: black">Sign Up</a></div>
 		      		{{/if}}
 		   		</div>
 			</div>
@@ -45,30 +56,49 @@
 
 	<div class="ui fixed container">
 		<div class="ui column centered grid">
-        	  <form id="myform" method="POST" action="/users/logout">
+        	<form id="myform" method="POST" action="/users/logout">
         	  	<input type="hidden" value="Log Off" name="logOut">
-        	  </form>
-    	  	  <div class = "six wide column" id="wrapper">
-		          {{#if success_msg}}
+        	</form>
+    	  	<div class = "ten wide column" id="wrapper">
+		        {{#if success_msg}}
 		            <div class="ui success message">
 		            	<i class="close icon"></i>
 		            	<div class="header">Info</div>
 		            	<p>{{success_msg}}</p>
 		        	</div>
-		          {{/if}}
-		          {{#if error_msg}}
+		        {{/if}}
+		        {{#if error_msg}}
 		            <div class="ui error message">
 		            	<i class="close icon"></i>
 		            	<div class="header">Error</div>
-		            	<p>{{error_msg}}</p>
+		           		<p>{{error_msg}}</p>
 		            </div>
-		          {{/if}}
-	          </div>
-		      <div class = "fourteen wide column">	          
-	          	{{{body}}}
-	    	  </div>
+		        {{/if}}
+	        </div>
+		    <div class = "fourteen wide column">	          
+	        	{{{body}}}
+	    	</div>
+
+	    	<div class="ui footer vertical segment">
+			    <div class="ui center aligned container">
+			      	<div class="ui horizontal small divided link list">
+				        <a class="item" href="/"><i class="home icon"></i>Home</a>
+				        <a class="item" href="/dashboard"><i class="itunes note icon"></i>Library</a>
+				        <a class="item" href="https://github.com/wenhao-yap/Project2_wdi" target="_blank"><i class="github alternate icon"></i>Github</a>
+				        {{#if user}}
+				        {{else}}
+							<div class="ui icon small button" data-tooltip="Join us and contribute tabs to the Library" data-position="right center"><a href="/users/register" style="color:black">
+							  Membership
+							</div>
+						{{/if}}
+			      	</div>
+			    </div>
+		  	</div>
 	    </div>
     </div>
+
+    
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

@@ -103,6 +103,15 @@ $(document).ready(function() {
               prompt : 'Please enter at most {ruleValue} characters'
             }
           ]
+        },
+        search: {
+          identifier  : 'search',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter a search query'
+            }
+          ]
         }
       },
       inline : true,

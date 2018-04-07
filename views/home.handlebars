@@ -1,28 +1,31 @@
-<div class="ui middle aligned center aligned grid" id="home">	  
-    <form class="ui large form" method="POST" action="/search">
-    	<div class="field">
-			<input type="text" name="search" placeholder="Search by song, composer, arranger " required>
+<div class="ui middle aligned center aligned grid" id="shiftTop">
+
+	<div class="ui raised ten wide column card">
+		<div class="image">
+        	<img src="/images/soundSnail.png">
+      	</div>
+	  	<div class="content">
+			<form class="ui large form" method="POST" action="/search">
+				<div class="field">
+					<div class="ui inverted left icon input">
+						<input type="text" name="search" placeholder="Search by song, composer, arranger ">
+						<i class="blue search icon"></i>
+					</div>
+				</div>
+				<div class="field">
+					<div class="five wide column">
+						<label id="home_select">Select libraries:</label>
+						<select class="ui search dropdown" name="option">
+						<option>GuitarTabs</option>
+						<option>Songsterr</option>
+						<option>Ultimate Guitar</option>
+						</select>
+					</div>
+				</div>
+			</form>    
 		</div>
-		<div class="field">
-			<div class="five wide column">
-				<label id="home_select">Select libraries:</label>
-				<select class="ui search dropdown" name="option">
-		      		<option>GuitarTabs</option>
-		      		<option>Songsterr</option>
-		      		<option>Ultimate Guitar</option>
-	      		</select>
-	      		<button class="ui pink basic button" name="submSearch" type="submit">
-				  <i class="search icon"></i>
-				  Search
-				</button>
-      		</div>
-		</div>
-    </form>
-  
-  	<div class="six wide row">
-		<div class="ui info message">
-	  	<i class="close icon"></i>
-	  	Disclaimer: Only song names work for Songsterr &nbsp;  
+		<div class="right floated extra content">
+			<a class="ui grey label" style="cursor:default">Only song names work for Songsterr</a>
 		</div>
 	</div>
 </div>
