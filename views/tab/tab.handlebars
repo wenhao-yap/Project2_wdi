@@ -1,16 +1,56 @@
-<form method="get" action="/dashboard">
-<input type="submit" value="Back to library">
-</form>
+<div class="ui grid container">
+	<div class="row">
+		<div class="ten wide column">
+			<div class="ui segment">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/{{tab.youtube}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			</div>
+		</div>
+		<div class="six wide column">
+			<div class="ui segment" id="viewWrapper">
+				<div class="item">
+			    	<div class="ui large header">{{tab.name}}</div>
+				</div>
+			  	<div class="ui divider"></div>
+			  	<div class="ui horizontal list">
+					<div class="item">
+				    	<div class="header">Composer</div>{{tab.composer}}
+					</div>
+					<div class="item">
+				    	<div class="header">Arranger</div>{{tab.arranger}}
+					</div>
+			 	</div>
+			  	<div class="ui list">
+				  	<div class="item">
+				    	<div class="header">Description</div>{{tab.description}}
+				  	</div>
+				</div>  	
+			  	<div class="ui divider"></div>
+			  	<div class="ui large buttons">
+				  <button class="ui green button" id="viewLyrics">View Lyrics</button>
+				  <div class="or"></div>
+				  <button class="ui inverted olive button active"><a href={{tab.link}} target="_blank">Tab Download</a></button>
+				</div>
+				<div class="ui olive message">
+			  		<i class="close icon"></i>
+			  		<div class="text">Right click Tab Download and save link as</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>
 
-<ul>
-  <li>Song: {{tab.name}}</li>
-  <li>Composer: {{tab.composer}}</li>
-  <li>Tab Number: {{tab.tabnum}}</li>
-  <li>Arranger: {{tab.arranger}}</li>
-  <li>Image URL: {{tab.image}}</li>
-  <li>Lyrics: {{tab.lyrics}}</li>
-  <li>Description: {{tab.description}}</li>
-  <li><a href="{{tab.link}}">Tab Download</a></li>
-</ul>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/{{tab.youtube}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<div class="ui modal viewLyrics">
+	<i class="close icon"></i>
+	<div class="image content">
+	<div class="ui medium image">
+		<img src={{tab.image}}>
+	</div>
+	<div class="description">
+		<div class="ui header">Lyrics</div>
+			<p>{{tab.lyrics}}</p>
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui positive button">Back</div>
+	</div>
+</div>

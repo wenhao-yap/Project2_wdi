@@ -85,8 +85,28 @@ $(document).ready(function() {
 	          prompt : 'Passwords does not match'
             }
           ]
+        },
+        description: {
+          identifier  : 'description',
+          rules: [
+            {
+              type   : 'maxLength[100]',
+              prompt : 'Please enter at most {ruleValue} characters'
+            }
+          ]
+        },
+        arranger: {
+          identifier  : 'arranger',
+          rules: [
+            {
+              type   : 'maxLength[20]',
+              prompt : 'Please enter at most {ruleValue} characters'
+            }
+          ]
         }
-      }
+      },
+      inline : true,
+      on     : 'blur'
     })
   ;
 });
@@ -98,5 +118,9 @@ $('.message .close')
       .transition('fade')
     ;
   })
+;
+
+$('.viewLyrics')
+  .modal('attach events', '#viewLyrics', 'show')
 ;
 

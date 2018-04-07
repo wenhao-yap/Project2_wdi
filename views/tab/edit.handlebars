@@ -30,7 +30,7 @@
                     </div>
                     <div class="field">
                         <label>Description:</label>
-                        <textarea name="description">{{tab.description}}</textarea>
+                        <textarea rows="3" name="description">{{tab.description}}</textarea>
                     </div>
                     <div class="field">
                         <label>Tab Download:</label>
@@ -38,7 +38,10 @@
                     </div>
                     <div class="field">
                         <label>Youtube:</label>
-                        <input name="youtube" type="text" value="{{tab.youtube}}"/>
+                        <div class="ui labeled input">
+                            <div class="ui label">https://www.youtube.com/watch?v=</div>
+                            <input name="youtube" type="text" value="{{tab.youtube}}"/>
+                        </div>
                     </div>
                     <div class="field">
                         <input name="submit" type="submit" value="Save Changes" />
