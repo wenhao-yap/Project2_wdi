@@ -83,9 +83,14 @@
 			    <div class="ui center aligned container">
 			      	<div class="ui horizontal small divided link list">
 				        <a class="item" href="/"><i class="home icon"></i>Home</a>
-				        <a class="item" href="/dashboard"><i class="itunes note icon"></i>Library</a>
+				        {{#if user}}
+				        	<a class="item" href="/dashboard"><i class="itunes note icon"></i>Dashboard</a>
+				        {{else}}
+				        	<a class="item" href="/dashboard"><i class="itunes note icon"></i>Library</a>
+				        {{/if}}
 				        <a class="item" href="https://github.com/wenhao-yap/Project2_wdi" target="_blank"><i class="github alternate icon"></i>Github</a>
 				        {{#if user}}
+				        	<div class="item"><a id="logout" style="color: black">Logout</a></div>
 				        {{else}}
 							<div class="ui icon small button" data-tooltip="Join us and contribute tabs to the Library" data-position="right center"><a href="/users/register" style="color:black">
 							  Membership
