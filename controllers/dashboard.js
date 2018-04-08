@@ -17,6 +17,18 @@ const editor = (db) => {
   }
 }
 
+const library = (db) => {
+  return (request, response) => {
+    db.dashboard.editor((error,queryResult) => {
+      let context = {
+        songs: queryResult.rows,
+        username: request.session.username
+      }
+      response.render('library',context);
+    });
+  }
+}
+
  /**
  * ===========================================
  * Export controller functions as a module
@@ -24,5 +36,6 @@ const editor = (db) => {
  */
 
 module.exports = {
-  editor
+  editor,
+  library
 } 

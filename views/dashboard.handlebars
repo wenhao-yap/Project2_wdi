@@ -1,5 +1,4 @@
 <div class = "ui grid"> 
-    {{#if user}}
     <div class="centered row">
         <div class="sixteen wide column">
             <h3 class="ui top attached header centered aligned">
@@ -38,26 +37,6 @@
             </a>
         </div>
     </div>
-    {{else}}
-        {{#each songs}}
-        <div class="four wide column">
-            <div class="ui link raised card">                
-                <a class="image" href="/tabs/{{this.id}}">
-                  <img src="{{this.image}}">
-                </a> 
-                <div class="content">
-                    <a class="header" href="/tabs/{{this.id}}">{{this.name}}</a>
-                    <div class="meta">
-                        <span class="date">{{this.composer}}</span>
-                    </div>
-                    <div class="description">
-                        Arranger: {{this.arranger}}
-                    </div>
-                </div>
-            </div>           
-        </div>
-        {{/each}} 
-    {{/if}}
 </div>
 
 

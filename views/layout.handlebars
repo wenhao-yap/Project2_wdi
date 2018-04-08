@@ -20,12 +20,14 @@
 	  		</div>
 	  		<div class="item">
 				<i class="itunes note icon"></i>
-				{{#if user}}	
-					<a href="../dashboard">Dashboard</a>
-				{{else}}
-		  			<a href="../dashboard">Library</a>
-	  			{{/if}}
-	  		</div>	  		
+		  		<a href="../library">Library</a>
+	  		</div>
+	  		{{#if user}}
+	  		<div class="item">	
+	  			<i class="edit icon"></i>
+				<a href="../dashboard">Dashboard</a>
+	  		</div>
+	  		{{/if}}	  		
 			<div class="item">
 	  			<form class="ui mini form" method="POST" action="/search">
   					<div class="ui search">
@@ -83,17 +85,19 @@
 			    <div class="ui center aligned container">
 			      	<div class="ui horizontal small divided link list">
 				        <a class="item" href="/"><i class="home icon"></i>Home</a>
+				        <a class="item" href="/library"><i class="itunes note icon"></i>Library</a>	
 				        {{#if user}}
-				        	<a class="item" href="/dashboard"><i class="itunes note icon"></i>Dashboard</a>
-				        {{else}}
-				        	<a class="item" href="/dashboard"><i class="itunes note icon"></i>Library</a>
-				        {{/if}}
+				        	<a class="item" href="/dashboard"><i class="edit icon"></i>Dashboard</a>
+				        {{/if}}				        			        
 				        <a class="item" href="https://github.com/wenhao-yap/Project2_wdi" target="_blank"><i class="github alternate icon"></i>Github</a>
 				        {{#if user}}
-				        	<div class="item"><a id="logout2" style="color: black">Logout</a></div>
+				        	<a class="item" id="logout2"><i class="settings icon"></i> Logout</a></div>
 				        {{else}}
-							<div class="ui icon small button" data-tooltip="Join us and contribute tabs to the Library" data-position="right center"><a href="/users/register" style="color:black">
-							  Register Membership
+				        	<a class="item" href="../users/login"><i class="settings icon"></i> Login</a></div>
+				        	<div class="item">
+								<div class="ui icon small button" data-tooltip="Join us and contribute tabs to the Library" data-position="right center"><a href="/users/register" style="color:black">
+								  Register Membership
+								</div>
 							</div>
 						{{/if}}
 			      	</div>
