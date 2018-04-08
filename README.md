@@ -9,5 +9,5 @@ A full stack web application with a light-weight approach in sharing and searchi
 - Ultimate Guitar scraper
 - Youtube API
 
-## Check out the site
-https://evening-harbor-37107.herokuapp.com/
+### Check out the site
+https://guitar-tabs.herokuapp.com/
