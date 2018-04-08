@@ -34,3 +34,6 @@
 #dashboardWrapper{
 	margin-bottom:15px;
 }
+.deleteButt{
+	display:none;
+}

@@ -3,8 +3,9 @@
         <div class="sixteen wide column">
             <h3 class="ui top attached header centered aligned">
               Hi {{username}}, welcome to Dashboard
+              <button id="toggleDelete">Toggle Delete</button>
             </h3>
-            <div class="ui attached segment">           
+            <div class="ui attached segment">                          
                 <table id="myTable">
                     <thead>
                         <th>ID(song)</th>
@@ -24,7 +25,7 @@
                             <form method="POST" action="/tabs/{{id}}?_method=DELETE">
                                 <button><a href="/tabs/{{this.id}}">View</a></button>
                                 <button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
-                                <button type="submit" id="deleteButt">Delete</button>
+                                <button type="submit" class="deleteButt">Delete</button>
                             </form>
                         </td>
                        </tr>
@@ -38,5 +39,3 @@
         </div>
     </div>
 </div>
-
-
