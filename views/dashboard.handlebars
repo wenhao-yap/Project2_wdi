@@ -1,14 +1,26 @@
+<div class = "ten wide column" id="dashboardWrapper">
+    <div class="ui info message">
+        <i class="close icon"></i>
+        <div class="header">Toggle Deletion</div>
+        <ul>
+            <li>Tip: You can toggle between enable and disable deletion</li>
+            <li>Warning: Deleting is irreversible.</li>
+        </ul>
+    </div>
+</div>
+
 <div class = "ui grid"> 
     <div class="centered row">
         <div class="sixteen wide column">
             <h3 class="ui top attached header centered aligned">
               Hi {{username}}, welcome to Dashboard
-              <button id="toggleDelete">Toggle Delete</button>
+
+              <button id="toggleDelete" class="ui toggle button active">Deletion enabled</button>
             </h3>
             <div class="ui attached segment">                          
-                <table id="myTable">
+                <table class="ui selectable celled table"id="myTable">
                     <thead>
-                        <th>ID(song)</th>
+                        <th>Song ID</th>
                         <th>Song</th>
                         <th>Composer</th>
                         <th>Arranger</th>
@@ -23,9 +35,11 @@
                         <td>{{this.arranger}}</td>
                         <td>
                             <form method="POST" action="/tabs/{{id}}?_method=DELETE">
-                                <button><a href="/tabs/{{this.id}}">View</a></button>
-                                <button><a href="/tabs/{{this.id}}/edit">Edit</a></button>
-                                <button type="submit" class="deleteButt">Delete</button>
+                                <div class="ui labelled icon buttons">
+                                    <button class="ui green basic button"><a href="/tabs/{{this.id}}"><i class="file alternate icon"></i>View</a></button>
+                                    <button class="ui blue basic button"><a href="/tabs/{{this.id}}/edit"><i class="edit icon"></i>Edit</a></button>
+                                </div>
+                                <button type="submit" class="ui red basic button deleteButt"><i class="trash alternate icon"></i>Delete</button>
                             </form>
                         </td>
                        </tr>
@@ -33,8 +47,8 @@
                     </tbody> 
                 </table>
             </div>
-            <a class="ui bottom attached button" href="/tabs/new">
-                <i class="plus circle icon"></i>Submit new tab/score
+            <a class="ui bottom attached teal button" href="/tabs/new">
+                <i class="plus circle icon"></i>Add new tab/score
             </a>
         </div>
     </div>

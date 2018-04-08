@@ -23,6 +23,28 @@ if(logout2){
   })
 }
 
+let toggleDelete = document.getElementById('toggleDelete');
+if(toggleDelete){
+  toggleDelete.addEventListener("click",function(){ 
+      let deleteButts = document.getElementsByClassName("deleteButt");
+      for(let i=0; i<deleteButts.length; i++){
+          if (deleteButts[i].style.display === "none") {
+              deleteButts[i].style.display = "inline";
+          } else {
+              deleteButts[i].style.display = "none";
+          }
+      }
+      if(deleteButts[deleteButts.length-1].style.display == "none"){
+        toggleDelete.textContent="Deletion disabled";
+        toggleDelete.classList.remove("active");
+      }
+      else if(deleteButts[deleteButts.length-1].style.display == "inline"){
+        toggleDelete.textContent="Deletion enabled";
+        toggleDelete.classList.add("active");
+      }
+  });
+}
+
 $(document).ready(function() {
 	let myTable = document.getElementById("myTable");
 	if(myTable){
@@ -138,18 +160,3 @@ $('.message .close')
 $('.viewLyrics')
   .modal('attach events', '#viewLyrics', 'show')
 ;
-
-let toggleDelete = document.getElementById('toggleDelete');
-if(toggleDelete){
-  toggleDelete.addEventListener("click",function(){ 
-      let deleteButts = document.getElementsByClassName("deleteButt");
-      for(let i=0; i<deleteButts.length; i++){
-          if (deleteButts[i].style.display === "none") {
-              deleteButts[i].style.display = "inline";
-          } else {
-              deleteButts[i].style.display = "none";
-          }
-      }
-  });
-}
-

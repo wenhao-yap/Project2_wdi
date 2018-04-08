@@ -4,7 +4,7 @@
 	<h2>Displaying {{searchResult.length}} result(s) for {{searchTerm}} :</h2>
 	{{#if songsterr}}
 		<p><small>(Externally from Songsterr)</small></p>
-		<table id="myTable">
+		<table id="myTable" class="ui selectable celled table">
 			<thead>
 				<th>ID</th>
 				<th>Song</th>
@@ -22,9 +22,10 @@
 		</table>
 	{{else if ultimateGuitar}}
 		<p><small>(Externally from Ultimate Guitar)</small></p>
-		<table id="myTable">
+		<table id="myTable" class="ui selectable celled table">
 			<thead>
 				<th>Song</th>
+				<th>Composer</th>
 				<th>Rating</th>
 				<th>Reviews</th>
 			</thead>
@@ -32,6 +33,7 @@
 				{{#each searchResult}}
 				<tr>
 					<td><a href="{{this.url}}" target="_blank">{{this.name}}</a></td>
+					<td>{{this.artist}}</td>
 					<td>{{this.rating}}</td>
 					<td>{{this.numberRates}}</td>
 				</tr>
@@ -39,7 +41,7 @@
 			</tbody>
 		</table>
 	{{else}}
-		<table id="myTable">
+		<table id="myTable" class="ui selectable celled table">
 		    <thead>
 		    	<th>ID(song)</th>
 		    	<th>Song</th>
