@@ -1,0 +1,37 @@
+<h2>Billboard Charts</h2>
+
+ <table id="myTable" class="ui selectable celled table">
+	<thead>
+		<th><h3 class="chartHD1">Rank</h3></th>
+		<th><h3 class="chartHD2">Track</h3></th>
+		<th>Peak position</th>
+		<th>Weeks on Chart</th>
+	</thead>
+	<tbody>
+		{{#each songs}}
+		<tr>
+			<td>
+				<div class="ui centered grid">
+					<p><h1 class="chartTXT">{{this.rank}}</h1></p>
+					<p><h4 class="chartTXT2">(Last Week:{{this.lastWk}})</h4></p>
+				</div>
+			</td>
+			<td>
+				<div class="ui grid">
+					<div class="row">
+						<div class="three wide column">
+							<img src={{this.cover}} width="91" height="91" class="chartIMG">
+						</div>
+						<div class=" seven wide column"> 
+							<h2>{{this.title}}</h2>
+							{{this.artist}}
+						</div>
+					</div>
+				</div>
+			</td>	
+			<td>{{this.peak}}</td>	
+			<td>{{this.wksOnChart}}</td>		
+		</tr>
+		{{/each}}
+	</tbody>
+</table>

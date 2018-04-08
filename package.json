@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
+    "billboard-top-100": "^2.0.9",
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
@@ -25,7 +26,7 @@
     "session": "^0.1.0",
     "ultimate-guitar-scraper": "^1.0.1"
   },
-  "engines" : {
-    "node" : "^9.8.0"
+  "engines": {
+    "node": "^9.8.0"
   }
 }

@@ -34,3 +34,24 @@
 #dashboardWrapper{
 	margin-bottom:15px;
 }
+
+/**
+* ===================================
+* Chart tab
+* ===================================
+*/
+.chartHD1{
+	margin-left:80px;
+}
+.chartHD2{
+	margin-left:30px;
+}
+.chartIMG{
+	margin-left:30px;
+}
+.charTXT{
+	margin-top: -5px;
+}
+.chartTXT2{
+	margin-top: -10px;
+}

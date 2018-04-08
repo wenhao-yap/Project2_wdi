@@ -1,6 +1,7 @@
 const users = require('./controllers/user');
 const dashboard = require('./controllers/dashboard');
 const tabs = require('./controllers/tab');
+const charts = require('./controllers/chart')
 
 module.exports = (app,db) => {
 	/*
@@ -44,4 +45,10 @@ module.exports = (app,db) => {
 	app.get('/tabs/:id', tabs.get(db));
 	//Delete a tab
 	app.delete('/tabs/:id', tabs.remove(db));
+	/*
+	*  =========================================
+	*  Charts
+	*  =========================================
+	*/
+	app.get('/charts',charts.get);
 };
