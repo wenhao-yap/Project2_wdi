@@ -31,11 +31,10 @@ module.exports = (dbPool) => {
 
       dbPool.query(queryString, values, (err, queryResult) => {
         const secondQuery = 'Update tabs\
-          Set tabnum=$1,arranger=$2,link=$3,youtube=$4\
+          Set arranger=$1,link=$2,youtube=$3\
           FROM songs\
-          WHERE tabs.song_id = songs.id AND songs.id=$5';
+          WHERE tabs.song_id = songs.id AND songs.id=$4';
         const secondValues = [
-          updateTab.tabnum,
           updateTab.arranger,
           updateTab.link,
           updateTab.youtube,
