@@ -22,7 +22,7 @@ const get = (db, request) => {
 
 const updateForm = (db) => {
   return (request, response) => {
-    db.tab.get(request.params.id, (error,queryResult) => {
+    db.tab.get(request.params.id,request.session, (error,queryResult) => {
       if(error){
         console.error("can't get form", error);
       }
