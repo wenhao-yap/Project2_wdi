@@ -8,7 +8,15 @@
 		<div class="six wide column">
 			<div class="ui segment" id="viewWrapper">
 				<div class="item">
-			    	<div class="ui large header">{{tab.name}}</div>
+			    	<div class="ui large header">{{tab.name}}
+			    		{{#if user}}
+					    	{{#if tab.favourite}}
+					    		<div class="ui huge star rating" data-rating="1" data-max-rating="1"></div>
+							{{else}}
+								<div class="ui huge star rating" data-max-rating="1"></div>
+							{{/if}}
+						{{/if}}
+					</div>
 				</div>			
 			  	<div class="ui divider"></div>
 			  	<div class="ui horizontal list">
@@ -50,3 +58,16 @@
 		<div class="ui positive button">Back</div>
 	</div>
 </div>
+
+<script>
+  window.onload = function() {
+    $('.ui.rating').rating();
+    $('.ui.rating').rating('setting', 'onRate', (value) => {
+      $.ajax({
+        method: "PUT",
+        url: window.location + "/favourite?_method=PUT",
+        data: { rating: value }
+      })
+    })
+  }
+</script>

@@ -9,6 +9,8 @@ const db = require('./db');
 const path = require('path');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
+const request = require("request");
+
 
 /**
  * ===================================
@@ -34,8 +36,9 @@ app.set('view engine', 'handlebars');
 // Express Session
 app.use(session({
     saveUninitialized: true,
-    resave: true,
-    secret: 'secret'
+    resave: false,
+    secret: 'secret',
+    cookie: { secure: false }
 }));
 
 // Express Validator
@@ -77,9 +80,11 @@ require('./routes')(app, db);
 
 app.get('/',(request,response) => {
   if(request.session.username){
+    console.log(request.session);
     console.log("current user: " + request.session.username + " with user id of " + request.session.userID);
   }
   else{
+    console.log(request.session.username);
     console.log("no user logged in");
   }
   response.render('home');

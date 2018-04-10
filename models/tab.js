@@ -7,11 +7,34 @@ const ugs = require("ultimate-guitar-scraper");
  */
 module.exports = (dbPool) => {
   return {
-    get: (id, callback) => {
+    get: (id, session, callback) => {
+      const queryString = 'SELECT * from songs INNER JOIN tabs on tabs.song_id = songs.id WHERE songs.id=$1'
       const values = [id];
-      dbPool.query('SELECT * from songs INNER JOIN tabs on tabs.song_id = songs.id WHERE songs.id=$1', values, (error, queryResult) => {
-        callback(error, queryResult);
-      });
+      dbPool.query(queryString, values, (error, queryResult) => {
+        if(session.username){
+          console.log("checking is song is favourite");
+          const secondQuery = 'SELECT * from favourites where song_id=$1 and user_id=$2'
+          const secondValues = [id,session.userID];
+          dbPool.query(secondQuery,secondValues,(err,queryOutput) => {
+          //if it is favourite
+            if(queryOutput.rowCount >= 1){
+              queryResult.rows[0].favourite = true;
+              console.log("this song is a favourite for " + session.username);
+              callback(error, queryResult);
+            }
+            else{
+              // if it is not favourite
+              console.log("this song is not a favourite for " + session.username);
+              queryResult.rows[0].favourite = false;
+              callback(error, queryResult);
+            }
+          })
+        }
+        else{
+          console.log("not checking if song is favourite as no user is logged in")
+          callback(error, queryResult);
+        }
+      })      
     },
 
     update: (updateTab,songID, callback) => {
@@ -107,15 +130,42 @@ module.exports = (dbPool) => {
     },
 
     remove: (id, callback) => {
-      const queryString = 'DELETE FROM "public"."tabs" WHERE song_id=$1'
+      const queryString = 'DELETE FROM "public"."tabs" WHERE song_id=$1';
       const values = [id];
       dbPool.query(queryString, values, (error, queryResult) => {
-        const secondQuery = 'DELETE FROM "public"."songs" WHERE id=$1'
+        const secondQuery = 'DELETE FROM "public"."songs" WHERE id=$1';
         dbPool.query(secondQuery,values,(err,queryOutput) => {
           console.log(secondQuery);
           callback(err, queryResult);
         });  
       });
+    },
+
+    favourite: (input,callback) => {
+      console.log(input);
+      const values = [
+        input.user_id,
+        input.song_id
+      ];
+      if (input.rating == 1){
+        let queryString = 'INSERT INTO favourites(user_id, song_id) VALUES ($1, $2)';
+        console.log("inserted");
+        console.log(queryString);
+         dbPool.query(queryString,values,(err,queryResult) => {
+          console.log(queryString);
+          console.log(queryResult);
+          callback(err, queryResult);
+        }); 
+      }
+      else{
+        let queryString = 'DELETE FROM favourites WHERE user_id=$1 AND song_id=$2';
+         console.log("deleted");
+          dbPool.query(queryString,values,(err,queryResult) => {
+            console.log(queryString);
+            console.log(queryResult);
+            callback(err, queryResult);
+        }); 
+      }
     } 
   }
 };

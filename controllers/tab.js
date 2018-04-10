@@ -3,9 +3,9 @@
  * Controller logic
  * ===========================================
  */
-const get = (db) => {
+const get = (db, request) => {
   return (request, response) => {
-    db.tab.get(request.params.id, (error, queryResult) => {
+    db.tab.get(request.params.id,request.session, (error, queryResult) => {
       if (error) {
         console.error('Error getting tabs', error);
         response.sendStatus(500);
@@ -130,6 +130,23 @@ const remove = (db) => {
   };
 };
 
+const favourite = (db) => {
+  return (request, response) => {
+    const input = { song_id: parseInt(request.params.id),
+                    user_id: request.session.userID,
+                    rating: parseInt(request.body.rating)
+                  }
+
+    db.tab.favourite(input, (error,queryResult) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('done');
+      }
+    })
+  }
+}
+
  /**
  * ===========================================
  * Export controller functions as a module
@@ -143,5 +160,6 @@ module.exports = {
   createForm,
   create,
   search,
-  remove
+  remove,
+  favourite
 } 

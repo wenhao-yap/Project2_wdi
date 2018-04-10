@@ -3,7 +3,7 @@ const dashboard = require('./controllers/dashboard');
 const tabs = require('./controllers/tab');
 const charts = require('./controllers/chart')
 
-module.exports = (app,db) => {
+module.exports = (app,db, request) => {
 	/*
 	*  =========================================
 	*  Users
@@ -17,7 +17,6 @@ module.exports = (app,db) => {
   	app.post('/users/login', users.login(db));
   	//Log Out
   	app.post('/users/logout', users.logout);
-
   	/*
 	*  =========================================
 	*  Dashboard
@@ -51,4 +50,11 @@ module.exports = (app,db) => {
 	*  =========================================
 	*/
 	app.get('/charts',charts.get);
+	/*
+	*  =========================================
+	*  Favourite
+	*  =========================================
+	*/
+  	// app.get('/users/favourite', users.favourite);
+  	app.put('/tabs/:id/favourite', tabs.favourite(db));
 };

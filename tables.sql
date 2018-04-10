@@ -23,3 +23,9 @@ CREATE TABLE IF NOT EXISTS tabs (
   link varchar(255),
   youtube varchar(255)
 );
+
+CREATE TABLE IF NOT EXISTS favourites (
+  id SERIAL PRIMARY KEY,
+  tab_id int,
+  user_id int
+);
