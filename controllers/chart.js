@@ -14,6 +14,10 @@ const get = (request, response) => {
       item.lastWk = x;
       item.peak = y;
       item.wksOnChart = z;
+
+      if(item.cover == ""){
+        item.cover = "/images/emptyBillboard.jpeg"
+      }
     }
 
     if (err) console.log(err);

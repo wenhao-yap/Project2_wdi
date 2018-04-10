@@ -1,12 +1,42 @@
 <div class = "ui grid"> 
     <div class="centered row">
         <div class="sixteen wide column">
-            <h3 class="ui top attached header centered aligned">
-              Hi {{username}}, welcome to Dashboard
-
-              <button id="toggleDelete" class="ui toggle button active">Deletion enabled</button>
-            </h3>
-            <div class="ui attached segment">                          
+            <div class="ui message">
+              <div class="header">
+                Hi {{username}}, welcome to exclusive member club
+              </div>
+              <ul class="list">
+                <li>You can now contribute songs to the library</li>
+                <li>Do note that deletion is irreversible.</li>
+                <li>You can now favourite songs that you like for easy accessibility</li>
+              </ul>
+            </div>           
+            <div class="ui top attached tabular menu">
+              <a class="item active" data-tab="first"><i class="star icon"></i>{{username}}'s Favourites</a>
+              <a class="item" data-tab="second">My Dashboard</a>
+            </div>
+            <div class="ui bottom attached tab segment active" data-tab="first">
+              {{#if favourites}}
+                <div class="ui list">
+                {{#each favourites}}
+                  <div class="item">
+                    <i class="right triangle icon"></i>
+                    <div class="content">
+                      <div class="header"><a href="/tabs/{{this.id}}">{{this.name}}</a></div>
+                      <div class="description">Composed by {{this.composer}} and arranged by {{this.arranger}}</div>
+                    </div>
+                  </div>
+                {{/each}}
+                </div>
+              {{else}}
+                No favourite tab(s) found. 
+              {{/if}}
+            </div>    
+            <div class="ui bottom attached tab segment" data-tab="second">
+                <p>
+                    <button id="toggleDelete" class="ui toggle button active">Deletion enabled</button>
+                    <button class="ui teal button"><a href="/tabs/new" style="color:white"><i class="plus circle icon"></i>Add new tab/score</a></button>
+                </p>                    
                 <table class="ui selectable celled table"id="myTable">
                     <thead>
                         <th>Song ID</th>
@@ -35,10 +65,7 @@
                        {{/each}}
                     </tbody> 
                 </table>
-            </div>
-            <a class="ui bottom attached teal button" href="/tabs/new">
-                <i class="plus circle icon"></i>Add new tab/score
-            </a>
+            </div> 
         </div>
     </div>
 </div>

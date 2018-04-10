@@ -160,3 +160,9 @@ $('.message .close')
 $('.viewLyrics')
   .modal('attach events', '#viewLyrics', 'show')
 ;
+
+$('.menu .item')
+  .tab()
+;
+
+$('.ui.rating').rating();

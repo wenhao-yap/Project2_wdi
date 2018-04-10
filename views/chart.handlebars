@@ -4,6 +4,7 @@
 	<thead>
 		<th><h3 class="chartHD1">Rank</h3></th>
 		<th><h3 class="chartHD2">Track</h3></th>
+		<th>Last Week</th>
 		<th>Peak position</th>
 		<th>Weeks on Chart</th>
 	</thead>
@@ -12,8 +13,7 @@
 		<tr>
 			<td>
 				<div class="ui centered grid">
-					<p><h1 class="chartTXT">{{this.rank}}</h1></p>
-					<p><h4 class="chartTXT2">(Last Week:{{this.lastWk}})</h4></p>
+					<p><h1>{{this.rank}}</h1></p>
 				</div>
 			</td>
 			<td>
@@ -22,15 +22,16 @@
 						<div class="three wide column">
 							<img src={{this.cover}} width="91" height="91" class="chartIMG">
 						</div>
-						<div class=" seven wide column"> 
+						<div class=" eight wide column chartTXT">
 							<h2>{{this.title}}</h2>
 							{{this.artist}}
 						</div>
 					</div>
 				</div>
 			</td>	
-			<td>{{this.peak}}</td>	
-			<td>{{this.wksOnChart}}</td>		
+			<td class="two wide column">{{this.lastWk}}</td>
+			<td class="two wide column">{{this.peak}}</td>	
+			<td class="two wide column">{{this.wksOnChart}}</td>		
 		</tr>
 		{{/each}}
 	</tbody>

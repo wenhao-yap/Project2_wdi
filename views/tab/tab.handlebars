@@ -38,6 +38,12 @@
 				  <div class="or"></div>
 				  <button class="ui inverted olive button active"><a href={{tab.link}} target="_blank">Tab Download</a></button>
 				</div>
+				{{#if user}}
+					<div class="ui olive message">
+				  		<i class="close icon"></i>
+				  		<div class="text">Favourite the song by clicking the star beside its name</div>
+					</div>	
+				{{/if}}				
 			</div>
 		</div>
 	</div>		
@@ -61,7 +67,6 @@
 
 <script>
   window.onload = function() {
-    $('.ui.rating').rating();
     $('.ui.rating').rating('setting', 'onRate', (value) => {
       $.ajax({
         method: "PUT",
