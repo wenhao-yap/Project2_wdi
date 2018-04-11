@@ -101,9 +101,9 @@ module.exports = (dbPool) => {
         request.get(url, (error,response,body) =>{
           if (error) {console.log(error);}
           const json = JSON.parse(body);
-          const status = "songsterr";
+          const library = "songsterr";
           let queryResult = json;
-          callback(status,queryResult);
+          callback(error,library,queryResult);
         });
       }
       else if(input.option == "Ultimate Guitar"){
@@ -114,17 +114,18 @@ module.exports = (dbPool) => {
           type: ['Tab', 'Chords', 'Guitar Pro']
         }, (error, tabs) => {
           if (error){console.log(error);}
-          const status = "ultimateGuitar"
+          const library = "ultimateGuitar"
           const queryResult = tabs;
-          callback(status,queryResult);
+          callback(error,library,queryResult);
         })
       }
       else{
         input.search = "%" + input.search + "%";
         const queryString = 'Select * from songs INNER JOIN tabs on tabs.song_id = songs.id WHERE lower(songs.name) LIKE lower($1) OR lower(songs.composer) LIKE lower($1) OR lower(tabs.arranger) LIKE lower($1)';
         const values = [input.search];
-        dbPool.query(queryString,values, (error, queryResult) => {
-          callback(error,queryResult);
+        dbPool.query(queryString,values, (error,queryResult) => {
+          const library = "guitartabs"
+          callback(error,library, queryResult);
         });
       }
     },

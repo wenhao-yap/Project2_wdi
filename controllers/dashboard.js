@@ -15,7 +15,6 @@ const editor = (db) => {
             username: request.session.username,
             favourites: queryOutput.rows
           }
-          console.log(queryOutput.rows);
           response.render('dashboard',context);
         });
     	});

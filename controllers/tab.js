@@ -77,7 +77,7 @@ const create = (db) => {
 const search = (db) => {
   return (request, response) => {
     const searchterm = request.body.search;
-    db.tab.search(request.body, searchterm, (error, queryResult) => {
+    db.tab.search(request.body, searchterm, (error, library, queryResult) => {
       if (queryResult.rowCount >= 1) {
         let context = {
           searchResult: queryResult.rows,
@@ -85,7 +85,7 @@ const search = (db) => {
           searchTerm: searchterm
         }
         response.render('tab/search',context);       
-      } else if(error == "songsterr"){
+      } else if(library == "songsterr"){
         let context = {
           searchResult: queryResult,
           failSearch: false,
@@ -94,7 +94,7 @@ const search = (db) => {
         }
         response.render('tab/search',context); 
       }
-      else if(error == "ultimateGuitar"){
+      else if(library == "ultimateGuitar"){
         let context = {
           searchResult: queryResult,
           failSearch: false,

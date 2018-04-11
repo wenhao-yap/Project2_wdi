@@ -84,7 +84,6 @@ app.get('/',(request,response) => {
     console.log("current user: " + request.session.username + " with user id of " + request.session.userID);
   }
   else{
-    console.log(request.session.username);
     console.log("no user logged in");
   }
   response.render('home');
